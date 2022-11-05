@@ -1,1 +1,11 @@
-<h3>レシピ登録画面</h3>
+<div class="container">
+    <h3>レシピ登録</h3>
+    <div class="row">
+        <div class="col-lg-5" style="background-color: orange;">
+            <%= render "recipe_form", recipe: @recipe %>
+        </div>
+        <div class="col-lg-7" style="background-color: skyblue;">
+            <%= render "material_form", recipe: @recipe %>
+        </div>
+    </div>
+</div>
