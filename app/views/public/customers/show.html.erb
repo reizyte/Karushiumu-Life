@@ -2,7 +2,7 @@
   <h3>マイページ</h3>
     <div class="row">
       <div class="col-lg-4" style="background-color: orange;">
-      <div><%= image_tag current_customer.get_profile_image, size:'100x100' %></div>
+      <div><%= image_tag current_customer.get_profile_image, size:"100x100" %></div>
       </div>
       <div class="col-lg-8" style="background-color: skyblue;">
         <h4><%= current_customer.name %></h4>
@@ -15,6 +15,6 @@
       <%= link_to "ブックマーク一覧", favorites_customers_path, class: "btn btn-warning" %>
       <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-info" %>
     </div>
-    
-    
+
+
 </div>

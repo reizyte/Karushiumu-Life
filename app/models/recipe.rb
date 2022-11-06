@@ -7,4 +7,8 @@ class Recipe < ApplicationRecord
   has_many :how_to_makes, dependent: :destroy
   has_many :cooking_materials, dependent: :destroy
   accepts_nested_attributes_for :cooking_materials, :how_to_makes, allow_destroy: true
+
+  def get_image
+    (image.attached?) ? image : 'no_image.png'
+  end
 end
