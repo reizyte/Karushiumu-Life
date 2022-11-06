@@ -1,1 +1,27 @@
-<h3>会員編集画面</h3>
+<div class="container">
+  <h3>会員編集画面</h3>
+    <%= form_with model: @customer, url:update_information_path, method: :patch do |f| %>
+      <div class="row">
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :profile_image, "アイコン画像" %></td>
+              <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :name, "お名前" %></td>
+              <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :introduction, "自己紹介" %></td>
+              <td><%= f.text_area :intoroduction, class: "form-control introduction" %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+</div>

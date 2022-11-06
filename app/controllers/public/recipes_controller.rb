@@ -11,6 +11,9 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
+    @cooking_materials = @recipe.cooking_materials
+    @how_to_makes = @recipe.how_to_makes
   end
 
   def create

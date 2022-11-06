@@ -6,20 +6,26 @@
     </div>
     <div class="col-lg-10">
       <div class="recipe_box">
-        <ul class="recipe_date">
+
           <% @recipes.each do |recipe| %>
-          <li class="recipe_item list-unstyled border row">
-            <p class="col-lg-4" style="background-color: skyblue;"><%= image_tag recipe.get_image, size:"200x200" %></p>
-            
-            <p><%= recipe.dish_name %></p>
-            <p><%= recipe.explanation %></p>
-            
-            <% end %>
-          </li>
-        </ul>
+          <%= link_to recipe_path(recipe) do %>
+
+            <ul class="recipe_date">
+              <li class="recipe_item list-unstyled border">
+                <div class="row">
+                <p class="col-lg-4" style="background-color: skyblue;"><%= image_tag recipe.get_image, size:"200x200" %></p>
+                <div class="col-lg-8 h5 link text-dark" style="background-color: pink;">
+                  <%= recipe.dish_name %><br>
+                  <%= recipe.explanation %>
+                </div>
+                </div>
+                <% end %>
+              </li>
+            </ul>
+
+          <% end %>
 
       </div>
-
     </div>
   </div>
 </div>

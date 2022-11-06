@@ -6,7 +6,7 @@
       </div>
       <div class="col-lg-8" style="background-color: skyblue;">
         <h4><%= current_customer.name %></h4>
-        <h5>自己紹介</h5>
+        <h5><%= current_customer.introduction %></h5>
         <%= link_to "プロフィール編集する", edit_information_path, class: "btn btn-success" %>
       </div>
     </div>
