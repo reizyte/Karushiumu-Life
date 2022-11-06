@@ -1,0 +1,16 @@
+
+  <p>作り方</p>
+
+<%= f.fields_for :how_to_makes do |t| %>
+<%= render "how_to_make_fields", f: t %>
+<% end %>
+<div id="make-association-insertion-point"></div>
+
+<div class="col-lg-4">
+<%= link_to_add_association "+フォームを追加", f, :how_to_makes,
+  class: "btn btn-secondary btn-block",
+  data: {
+  association_insertion_node: '#make-association-insertion-point',
+  association_insertion_method: 'after'
+  }%>
+  </div>

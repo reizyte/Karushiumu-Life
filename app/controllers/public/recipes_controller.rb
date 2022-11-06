@@ -7,6 +7,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
+    @recipes = Recipe.all
   end
 
   def show
@@ -14,6 +15,8 @@ class Public::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    #@recipe.genre = Genre.find(1)
+    @recipe.customer = current_customer
     @recipe.save
     redirect_to recipe_path(@recipe)
   end
@@ -24,9 +27,10 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:dish_name, :explanation, :cooking_time, :serving, :image,
-                                  recipe_materials_attributes:[:material_name, :quantity, :_destroy],
-                                  how_to_makes_attributes:[:cooking_procedure, :_destroy])
+    params.require(:recipe).permit(:dish_name, :explanation, :cooking_time, :serving, :image, :genre_id,
+                                  how_to_makes_attributes:[:cooking_procedure, :_destroy],
+                                  cooking_materials_attributes:[:material_name, :quantity, :_destroy]
+                                  )
 
   end
 end

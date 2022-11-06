@@ -1,6 +1,5 @@
 <table>
   <tbody>
-  <%= form_with model:recipe, url:recipes_path, method: :post do |f| %>
     <tr>
       <td><%= f.label :image, "レシピ画像" %></td>
       <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -13,6 +12,5 @@
       <td><%= f.label :explanation, "レシピ紹介文" %></td>
       <td><%= f.text_area :explanation %></td>
     </tr>
-  <% end %>
   </tbody>
 </table>

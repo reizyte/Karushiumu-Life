@@ -1,1 +1,13 @@
 <h3>レシピ一覧</h3>
+<% @recipes.each do |recipe| %>
+<%= recipe.dish_name %>
+<%= recipe.explanation %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3" style="background-color: orange;">
+      ジャンルのサイドバー
+    </div>
+  </div>
+</div>

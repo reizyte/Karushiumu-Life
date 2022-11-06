@@ -1,3 +1,3 @@
 class CookingMaterial < ApplicationRecord
-  belongs_to :recip
+  belongs_to :recipe
 end
