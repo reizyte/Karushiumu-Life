@@ -6,8 +6,11 @@ class Public::RecipesController < ApplicationController
     @how_to_makes = @recipe.how_to_makes.build
   end
 
+
   def index
-    @recipes = Recipe.all
+    #@recipes = Recipe.all
+     @q = Recipe.ransack(params[:q])
+    @recipes = @q.result(distinct: true)
   end
 
   def show
@@ -25,6 +28,9 @@ class Public::RecipesController < ApplicationController
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
   end
 
   private

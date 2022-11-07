@@ -1,20 +1,42 @@
 <div class="container">
   <h3>レシピ詳細画面</h3>
   <div class="row">
-    <div class="col-6" style="background-color: pink;">
-  <p class="h3"><%= @recipe.dish_name %></p>
-  <p class="h5"><%= @recipe.explanation %></p>
-  <p><%= @recipe.customer.name%>さんの投稿</p>
-   </div>
-   <div class="col-6" style="background-color: limegreen;">
-     <%#= link_to "レシピを削除", recipe_path(@recipe), method: :delete, class: "btn btn-danger" %>
-   </div>
+    <div class="col-2" style="background-color: orange;">ジャンルのサイドバー</div>
+
+    <div class="col-5" style="background-color: pink;">
+      <p class="h3"><%= @recipe.dish_name %></p>
+      <p class="h5"><%= @recipe.explanation %></p>
+      <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= @recipe.customer.name%>さんの投稿</p>
+      <p><%= image_tag @recipe.get_image, size:"300x300" %></p>
+    </div>
+
+    <div class="col-5" style="background-color: limegreen;">
+      <% if @recipe.customer == current_customer %>
+       <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, class: "btn btn-danger" %>
+      <% end %>
+
+      <p>材料 <%= @recipe.serving %>人分</p><%= @recipe.cooking_time %>分
+      <table class="table table-striped">
+        <tbody>
+          <% @cooking_materials.each do |cooking_material| %>
+            <tr>
+              <td class="mr-4"><%= cooking_material.material_name %></td>
+              <td><%= cooking_material.quantity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col-6" style="background-color: yellow;">画像<%= image_tag @recipe.get_image, size:"200x200" %></div>
-    <div class="col-6" style="background-color: skyblue;">材料</div>
-  </div>
-  <div class="row">
-    <p>作り方</p>
+    <div class="col-2"></div>
+    <div class="col-10" style="background-color: skyblue;">
+      <% @how_to_makes.each do |how_to_make| %>
+        <p><%= how_to_make.cooking_procedure %></p>
+      <% end %>
+    </div>
   </div>
 </div>
+
+

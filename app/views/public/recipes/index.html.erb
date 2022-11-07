@@ -1,10 +1,17 @@
 <div class="container">
   <h3>レシピ一覧</h3>
-  <div class="row">
-    <div class="col-lg-2" style="background-color: orange;">
-      ジャンルのサイドバー
-    </div>
-    <div class="col-lg-10">
+<%= search_form_for @q do |f| %>
+  <%= f.label :dish_name, "レシピ" %>
+  <%= f.search_field :dish_name_cont %>
+  <br>
+  <%= f.submit '検索' %>
+
+
+<% end %>
+
+    <div class="row">
+      <div class="col-2" style="background-color: orange;">ジャンルのサイドバー</div>
+    <div class="col-10">
       <div class="recipe_box">
 
           <% @recipes.each do |recipe| %>
@@ -13,10 +20,10 @@
             <ul class="recipe_date">
               <li class="recipe_item list-unstyled border">
                 <div class="row">
-                <p class="col-lg-4" style="background-color: skyblue;"><%= image_tag recipe.get_image, size:"200x200" %></p>
-                <div class="col-lg-8 h5 link text-dark" style="background-color: pink;">
-                  <%= recipe.dish_name %><br>
-                  <%= recipe.explanation %>
+                <div class="col-4 d-flex align-items-center"><%= image_tag recipe.get_image, size:"150x150" %></div>
+                <div class="col-8 h5 link text-dark" style="background-color: pink;">
+                  <p class="text-center h4"><%= recipe.dish_name %></p><br>
+                  <p class="text-center"><%= recipe.explanation %></p>
                 </div>
                 </div>
                 <% end %>
