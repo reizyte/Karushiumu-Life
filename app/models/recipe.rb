@@ -11,4 +11,8 @@ class Recipe < ApplicationRecord
   def get_image
     (image.attached?) ? image : 'no_image.png'
   end
+
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
 end

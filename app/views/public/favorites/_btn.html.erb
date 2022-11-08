@@ -1,0 +1,15 @@
+<% if recipe.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to recipe_favorites_path(recipe), method: :delete, class: "h7 link text-dark" do %>
+        お気に入り<i class="fas fa-star" style="color: gold;"></i>
+        <%= recipe.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to recipe_favorites_path(recipe), method: :post, class: "h7 link text-dark" do %>
+      お気に入り<i class="far fa-star"></i>
+        <%= recipe.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
