@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えています。
-    get "customers/information/edit" => "customers#edit", as: "edit_information"
+    #get "customers/information/edit" => "customers#edit", as: "edit_information"
     patch "customers/information" => "customers#update", as: "update_information"
     get "customers/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
     patch "customers/withdraw" => "customers#withdraw", as: "withdraw_customer"
 
-    resource :customers, only:[:show] do
+    resources :customers, only:[:show, :edit] do
       collection do
         get :favorites
       end

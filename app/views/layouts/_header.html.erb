@@ -21,7 +21,7 @@
           <% elsif customer_signed_in? %>
           <div class="d-flex align-items-center">ようこそ、<%= current_customer.name %>さん!</div>
           <li class="nav-item">
-            <%= link_to "マイページ", customers_path, class: "nav-link text-dark" %>
+            <%= link_to "マイページ", customer_path(current_customer), class: "nav-link text-dark" %>
           </li>
           <li class="nav-item">
             <%= link_to "レシピ一覧", recipes_path, class: "nav-link text-dark" %>

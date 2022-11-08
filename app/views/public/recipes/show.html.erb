@@ -1,12 +1,22 @@
 <div class="container">
   <h3>レシピ詳細画面</h3>
   <div class="row">
-    <div class="col-2" style="background-color: orange;">ジャンルのサイドバー</div>
+    <div class="col-2" style="background-color: orange;">ジャンルのサイドバー
+    <table class="table">
+          <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+              <td><%= link_to genre.name, recipes_path(genre_id: genre.id), class: "link text-dark" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
 
     <div class="col-5" style="background-color: pink;">
       <p class="h3"><%= @recipe.dish_name %></p>
       <p class="h5"><%= @recipe.explanation %></p>
-      <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= @recipe.customer.name%>さんの投稿</p>
+      <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
       <p><%= image_tag @recipe.get_image, size:"300x300" %></p>
     </div>
 
