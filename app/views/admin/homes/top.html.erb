@@ -1,1 +1,22 @@
-<h3>管理者top</h3>
+<div class="container">
+  <h3>管理者top(会員一覧)</h3>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>会員id</th>
+        <th>会員名</th>
+        <th>ステータス</th>
+      </tr>
+      </thead>
+    <% @customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.name %></td>
+      </tr>
+    </tbody>
+    <% end %>
+    </table>
+    </div>
+  </div>
