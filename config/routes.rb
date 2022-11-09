@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えています。
     #get "customers/information/edit" => "customers#edit", as: "edit_information"
-    patch "customers/information" => "customers#update", as: "update_information"
+    # patch "customers/information" => "customers#update", as: "update_information"
     get "customers/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
     patch "customers/withdraw" => "customers#withdraw", as: "withdraw_customer"
 
-    resources :customers, only:[:show, :edit] do
+    resources :customers, only:[:show, :edit, :update] do
       member do
         get :favorites
       end
