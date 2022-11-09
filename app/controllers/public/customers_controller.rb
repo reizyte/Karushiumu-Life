@@ -27,7 +27,9 @@ class Public::CustomersController < ApplicationController
 
   #ブックマーク一覧
   def favorites
-
+    @customer = Customer.find(params[:id])
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:recipe_id)
+    @favorite_recipes = Recipe.find(favorites)
   end
 
   private
@@ -39,7 +41,7 @@ class Public::CustomersController < ApplicationController
   # def ensure_currect_customer
   #   @customer = Customer.find(params[:id])
   #   unless @customer == current_customer
-  # #   # if @current_user.id != params[:id].to_i
+  # # #   # if @current_user.id != params[:id].to_i
   #     redirect_to customer_path(current_customer)
   #   end
   # end

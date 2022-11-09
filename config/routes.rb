@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     patch "customers/withdraw" => "customers#withdraw", as: "withdraw_customer"
 
     resources :customers, only:[:show, :edit] do
-      collection do
+      member do
         get :favorites
       end
     end

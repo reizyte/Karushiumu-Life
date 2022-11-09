@@ -14,21 +14,7 @@
        <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, class: "btn btn-danger" %>
       <% end %>
 
-      <% if @recipe.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to recipe_favorites_path(@recipe), method: :delete, class: "h7 link text-dark" do %>
-        お気に入り<i class="fas fa-star" style="color: gold;"></i>
-        <%= @recipe.favorites.count %>
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to recipe_favorites_path(@recipe), method: :post, class: "h7 link text-dark" do %>
-      お気に入り<i class="far fa-star"></i>
-        <%= @recipe.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
+      <%= render "public/favorites/btn", recipe: @recipe %>
 
       <p class="mt-4">材料 <%= @recipe.serving %>人分</p><%= @recipe.cooking_time %>分
       <table class="table table-striped">
@@ -46,15 +32,14 @@
   </div>
 
   <div class="row">
-<div class="col-1"></div>
-<div class="col-10">
+    <div class="col-1"></div>
+    <div class="col-10">
       <% @how_to_makes.each do |how_to_make| %>
         <p><%= how_to_make.cooking_procedure %></p>
       <% end %>
-      </div>
-      <div class="col-1"></div>
     </div>
-
+    <div class="col-1"></div>
+  </div>
 </div>
 
 

@@ -22,22 +22,10 @@
     <div class="col-10">
       <div class="row">
         <% @recipes.each do |recipe| %>
-          <ul class="myrecipe_date col-3">
-            <li class="myrecipe_item list-unstyled">
-              <%= link_to recipe_path(recipe) do %>
-                <div class="border">
-                  <div class="mx-auto" style="width: 130px;"><%= image_tag recipe.get_image, size:"130x130" %></div>
-                  <div class="h5 link text-dark" style="background-color: pink;">
-                    <p class="text-center h4"><%= recipe.dish_name %></p><br>
-                    <p class="text-center"><%= recipe.explanation %></p>
-                    
-                  </div>
-                </div>
-              <% end %>
-            </li>
-          </ul>
+          <%= render "public/customers/recipe", recipe: recipe %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+<%#= render "public/favorites/btn", recipe: @recipe %>
