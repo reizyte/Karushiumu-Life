@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えています。
     #get "customers/information/edit" => "customers#edit", as: "edit_information"
     # patch "customers/information" => "customers#update", as: "update_information"
-    get "customers/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
-    patch "customers/withdraw" => "customers#withdraw", as: "withdraw_customer"
+    get "customers/:id/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
+    patch "customers/:id/withdraw" => "customers#withdraw", as: "withdraw_customer"
 
     resources :customers, only:[:show, :edit, :update] do
       member do
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to => "homes#top"
     resources :genres, only:[:index, :edit, :create, :update]
-    resources :customer, only:[:show, :edit, :update]
+    resources :customers, only:[:show, :edit, :update]
   end
 
 
