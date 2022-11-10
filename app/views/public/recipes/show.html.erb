@@ -49,6 +49,9 @@
     <p><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %><%= recipe_comment.customer.name %></p>
     <%= recipe_comment.created_at.strftime('%Y/%m/%d') %>
     <%= recipe_comment.comment %>
+    <% if recipe_comment.customer == current_customer || admin_signed_in? %>
+    <%= link_to "コメント削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger" %>
+    <% end %>
     <% end %>
   </div>
 

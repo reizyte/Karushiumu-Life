@@ -1,1 +1,39 @@
-<h3>会員詳細画面</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-4 h3"><%= @customer.name %>さんの会員詳細</div>
+            <table class="table table-borderless">
+                <tbody class="h5">
+                    <tr>
+                        <td>会員ID</td>
+                        <td><%= @customer.id %></td>
+                    </tr>
+                    <tr>
+                        <td>氏名</td>
+                        <td><%= @customer.name %></td>
+                    </tr>
+                    <tr>
+                        <td>メールアドレス</td>
+                        <td><%= @customer.email %></td>
+                    </tr>
+                    <tr>
+                        <td>会員ステータス</td>
+                        <td><% if @customer.is_deleted %>
+                                <p class="font-weight-bold text-secondary">退会</p>
+                            <% else %>
+                                <p class="font-weight-bold text-success">有効</p>
+                            <% end%>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <%= link_to "会員編集する", edit_admin_customer_path(@customer), class: "ml-2 btn btn-success" %>
+            <%= link_to "会員一覧に戻る", admin_root_path, class: "ml-5 btn btn-info" %>
+        </div>
+
+    </div>
+</div>
+
+<% @recipes.each do |recipe| %>
+          <%= render "public/customers/recipe", recipe: recipe %>
+        <% end %>

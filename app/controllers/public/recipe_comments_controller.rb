@@ -9,7 +9,7 @@ class Public::RecipeCommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Recipecomment.find(params[:id])
+    @comment = RecipeComment.find(params[:id])
     @comment.destroy
     redirect_to request.referer
   end

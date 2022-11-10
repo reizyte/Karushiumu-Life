@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root :to =>"homes#top"
+    get "homes/about" => "homes#about", as: "about"
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えています。
     #get "customers/information/edit" => "customers#edit", as: "edit_information"
     # patch "customers/information" => "customers#update", as: "update_information"
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
 
     resources :recipes, only:[:new, :index, :show, :create, :destroy] do
         resource :favorites, only:[:create, :destroy]
-        resources :recipe_comments, only:[:create, :destoroy]
+        resources :recipe_comments, only:[:create, :destroy]
     end
   end
 
