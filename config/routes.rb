@@ -25,6 +25,10 @@ Rails.application.routes.draw do
       end
     end
 
+
+      get "recipes/search" => "recipes#search"
+
+
     resources :recipes, only:[:new, :index, :show, :create, :destroy] do
         resource :favorites, only:[:create, :destroy]
         resources :recipe_comments, only:[:create, :destroy]
