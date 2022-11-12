@@ -3,10 +3,16 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-5">
-      <p class="h3"><%= @recipe.dish_name %></p>
-      <p class="h5"><%= @recipe.explanation %></p>
+      <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
+      <p class="mb-3 h5"><%= @recipe.explanation %></p>
       <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
       <p><%= image_tag @recipe.get_image, size:"300x300" %></p>
+      <p>タグ</p>
+      <% @recipe_tags.each do |tag| %>
+      <p><%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>
+          <%="(#{tag.recipes.count})" %>
+      </p>
+      <% end %>
     </div>
 
     <div class="col-5 mt-5">
@@ -14,7 +20,9 @@
        <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, class: "btn btn-danger" %>
       <% end %>
 
+      <div id="favorite_buttons_<%= @recipe.id %>">
       <%= render "public/favorites/btn", recipe: @recipe %>
+      </div>
 
       <p class="mt-4">材料 <%= @recipe.serving %>人分</p><%= @recipe.cooking_time %>分
       <table class="table table-striped">
@@ -34,14 +42,18 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
+      <h5 class="mt-5">作り方</h5>
       <% @how_to_makes.each do |how_to_make| %>
-        <p><%= how_to_make.cooking_procedure %></p>
+        <p class="border-bottom"><%= how_to_make.cooking_procedure %></p>
       <% end %>
     </div>
     <div class="col-1"></div>
   </div>
 
   <div class="row mt-5">
+    <div class="col-1"></div>
+    <h5>コメントはこちら</h5>
+    <div class="w-100"></div>
     <div class="col-1"></div>
   <div>
     <p>コメント件数<%= @recipe.recipe_comments.count %></p>

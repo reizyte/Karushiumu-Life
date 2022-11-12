@@ -18,7 +18,7 @@ class Public::RecipesController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @recipes = @genre.recipes
     end
-    @tag_list = Tag.all
+    #@tag_list = Tag.all
   end
 
   def show
@@ -26,7 +26,9 @@ class Public::RecipesController < ApplicationController
     @cooking_materials = @recipe.cooking_materials
     @how_to_makes = @recipe.how_to_makes
     @recipe_comment = RecipeComment.new
+    @recipe_tags = @recipe.tags
   end
+
 
   def search
     @tag_list = Tag.all
@@ -37,8 +39,8 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.customer = current_customer
-    # 受け取った値を,で区切って配列にする
-    tag_list = params[:recipe][:tag_name].split(nil)
+    # 受け取った値を「、」で区切って配列にする
+    tag_list = params[:recipe][:tag_name].split("、")
     if @recipe.save
       @recipe.save_tag(tag_list)
     redirect_to recipe_path(@recipe)

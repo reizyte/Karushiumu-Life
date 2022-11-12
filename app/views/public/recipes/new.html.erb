@@ -1,5 +1,8 @@
 <div class="container">
     <h3>レシピ登録</h3>
+
+    <%= render "layouts/errors", obj: @recipe %>
+
     <%= form_with model:@recipe, url:recipes_path, method: :post do |f| %>
     <div class="row">
         <div class="col-6" style="background-color: orange;">
@@ -15,9 +18,10 @@
         </div>
 
         <p>タグ追加</p>
-        <%= f.text_field :tag_name %>
+        <p>例：牛乳、卵</p>
+        <p><%= f.text_field :tag_name %></p>
 
-        <div class="col-3 offset-1" style="background-color: blue;">
+        <div class="col-3" style="background-color: blue;">
             <%= f.label :genre_id, "ジャンル" %>
 			<div class="select_field"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
             <%= f.submit "投稿する", class: "btn btn-primary" %>

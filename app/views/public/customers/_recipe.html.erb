@@ -6,7 +6,11 @@
         <div class="link text-dark">
           <p class="text-center h4"><%= recipe.dish_name %></p><br>
           <p class="text-center"><%= recipe.explanation %></p>
-          <p class="text-center h6"><%= render "public/favorites/btn", recipe: recipe %></p>
+          <p class="text-center h6">
+          <div id="favorite_buttons_<%= recipe.id %>">
+            <%= render "public/favorites/btn", recipe: recipe %>
+          </div>
+            </p>
         </div>
       </div>
     <% end %>

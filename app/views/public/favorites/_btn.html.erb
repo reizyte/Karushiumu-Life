@@ -1,11 +1,11 @@
 <% if customer_signed_in? %>
 <% if recipe.favorited_by?(current_customer) %>
-  <%= link_to recipe_favorites_path(recipe), method: :delete, class: "link text-dark" do %>
+  <%= link_to recipe_favorites_path(recipe), method: :delete, remote: true, class: "link text-dark" do %>
     お気に入り<i class="fas fa-star" style="color: gold;"></i>
     <%= recipe.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to recipe_favorites_path(recipe), method: :post, class: "link text-dark" do %>
+  <%= link_to recipe_favorites_path(recipe), method: :post, remote: true, class: "link text-dark" do %>
     お気に入り<i class="far fa-star"></i>
     <%= recipe.favorites.count %>
   <% end %>
