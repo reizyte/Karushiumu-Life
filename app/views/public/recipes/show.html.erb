@@ -1,7 +1,6 @@
 <div class="container">
   <h3>レシピ詳細画面</h3>
-  <div class="row">
-    <div class="col-1"></div>
+  <div class="row justify-content-center">
     <div class="col-5">
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
@@ -36,44 +35,50 @@
         </tbody>
       </table>
     </div>
-    <div class="col-1"></div>
   </div>
 
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <h5 class="mt-5">作り方</h5>
+  <div class="row justify-content-center">
+      <h5 class="border-bottom mt-5">作り方</h5>
+      <div class="w-100"></div>
+      <div class="col-10">
       <% @how_to_makes.each do |how_to_make| %>
         <p class="border-bottom"><%= how_to_make.cooking_procedure %></p>
       <% end %>
     </div>
-    <div class="col-1"></div>
+
   </div>
 
-  <div class="row mt-5">
-    <div class="col-1"></div>
-    <h5>コメントはこちら</h5>
+  <div class="row justify-content-center mt-5">
+    <!--<div class="col-1"></div>-->
+    <h5 class="border-bottom">コメントはこちら</h5>
+
     <div class="w-100"></div>
-    <div class="col-1"></div>
-  <div>
-    <p>コメント件数<%= @recipe.recipe_comments.count %></p>
+    <!--<div class="col-1"></div>-->
+  <!--<div>-->
+<p>コメント件数<%= @recipe.recipe_comments.count %></p>
+<div class="w-100"></div>
+<div class="col-10">
     <% @recipe.recipe_comments.each do |recipe_comment| %>
-    <p><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %><%= recipe_comment.customer.name %></p>
-    <%= recipe_comment.created_at.strftime('%Y/%m/%d') %>
-    <%= recipe_comment.comment %>
-    <% if recipe_comment.customer == current_customer || admin_signed_in? %>
-    <%= link_to "コメント削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger" %>
-    <% end %>
-    <% end %>
-  </div>
+    <p class="mr-3"><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %><%= recipe_comment.customer.name %></p>
+    <p class="mr-3"><%= recipe_comment.created_at.strftime('%Y/%m/%d') %></p>
+    <p><%= recipe_comment.comment %></p>
 
-  <div>
+    <% if recipe_comment.customer == current_customer || admin_signed_in? %>
+    <%= link_to "コメント削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger mb-5" %>
+    <% end %>
+    <% end %>
+    </div>
+  <!--</div>-->
+<div class="w-100"></div>
+<div class="col-10">
+  <div class="mt-4">
     <%= form_with model: [@recipe, @recipe_comment] do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントをここに" %>
+    <%= f.text_area :comment, placeholder: "コメントをここに", size: "30x6" %>
     <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>
   </div>
-  <div class="col-1"></div>
+  <!--<div class="col-1"></div>-->
+  </div>
   </div>
 </div>
 
