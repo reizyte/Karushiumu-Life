@@ -1,2 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.jumbotron-extend {
+  width: 100%;
+  height: 500px;
+  background-position: top center;
+  background-image: url("../images/top.jpg");
+  background-size: cover;
+}
