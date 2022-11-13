@@ -49,14 +49,22 @@
   </div>
 
   <div class="row justify-content-center mt-5">
-    <!--<div class="col-1"></div>-->
     <h5 class="border-bottom">コメントはこちら</h5>
 
     <div class="w-100"></div>
-    <!--<div class="col-1"></div>-->
-  <!--<div>-->
 <p>コメント件数<%= @recipe.recipe_comments.count %></p>
 <div class="w-100"></div>
+
+<div class="w-100"></div>
+<div class="col-10">
+  <div class="mt-4">
+    <%= form_with model: [@recipe, @recipe_comment] do |f| %>
+    <%= f.text_area :comment, placeholder: "コメントをここに", size: "30x5" %>
+    <%= f.submit "送信", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  </div>
+
 <div class="col-10">
     <% @recipe.recipe_comments.each do |recipe_comment| %>
     <p class="mr-3"><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %><%= recipe_comment.customer.name %></p>
@@ -68,17 +76,8 @@
     <% end %>
     <% end %>
     </div>
-  <!--</div>-->
-<div class="w-100"></div>
-<div class="col-10">
-  <div class="mt-4">
-    <%= form_with model: [@recipe, @recipe_comment] do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントをここに", size: "30x6" %>
-    <%= f.submit "送信", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  <!--<div class="col-1"></div>-->
-  </div>
+
+
   </div>
 </div>
 

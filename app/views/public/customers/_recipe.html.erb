@@ -1,15 +1,13 @@
 <ul class="myrecipe_date col-3">
   <li class="myrecipe_item list-unstyled">
-    <%= link_to recipe_path(recipe) do %>
-      <div class="border">
+    <%= link_to recipe_path(recipe), class: "text-dark" do %>
+      <div class="border text-center">
         <div class="mx-auto" style="width: 130px;"><%= image_tag recipe.get_image, size:"130x130" %></div>
-        <div class="link text-dark">
-          <p class="text-center h4"><%= recipe.dish_name %></p><br>
-          <p class="text-center"><%= recipe.explanation %></p>
-          <p class="text-center h6">
+          <p class="h5"><%= recipe.dish_name %></p><br>
+          <p><%= recipe.explanation %></p>
+          <p class="h6">
           <div id="favorite_buttons_<%= recipe.id %>">
             <%= render "public/favorites/btn", recipe: recipe %>
-          </div>
             </p>
         </div>
       </div>

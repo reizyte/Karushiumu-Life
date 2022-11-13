@@ -1,3 +1,9 @@
-<% @recipes.each do |recipe| %>
-          <%= render "public/customers/recipe", recipe: recipe %>
-        <% end %>
+<div class="container">
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <%= render "public/customers/recipe", recipe: recipe %>
+    <% end %>
+  </div>
+</div>
+
+
