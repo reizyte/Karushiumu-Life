@@ -23,12 +23,12 @@
             </tr>
           <% end %>
           
-      <!--    <p>タグ</p>-->
-      <!--<%# @tag_list.each do |tag| %>-->
-      <!--<p><%#= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>-->
-      <!--    <%#="(#{tag.recipes.count})" %>-->
-      <!--</p>-->
-      <!--<%# end %>-->
+          <p>タグ</p>
+      <% @tag_list.each do |tag| %>
+      <p><%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>
+          <%="(#{tag.recipes.count})" %>
+      </p>
+      <% end %>
         </tbody>
       </table>
     </div>
