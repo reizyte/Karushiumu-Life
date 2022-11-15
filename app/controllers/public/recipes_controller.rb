@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-
+  before_action :authenticate_customer!, except:[:index, :show, :search]
   def new
     @recipe = Recipe.new
     @cooking_materials = @recipe.cooking_materials.build  #親モデル.子モデル.buildで子モデルのインスタンス作成
@@ -52,7 +52,7 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to customer_path(current_customer)
   end
 
   private

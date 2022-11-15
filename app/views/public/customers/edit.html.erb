@@ -1,7 +1,6 @@
-
 <div class="container">
   <h3>会員編集画面</h3>
-
+<%= render "layouts/errors", obj: @customer %>
     <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
       <div class="row">
         <div class="col-8">

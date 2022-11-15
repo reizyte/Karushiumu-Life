@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-5 mt-5">
-      <% if @recipe.customer == current_customer %>
+      <% if @recipe.customer == current_customer || admin_signed_in? %>
        <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, class: "btn btn-danger" %>
       <% end %>
 
@@ -56,10 +56,10 @@
 <div class="w-100"></div>
 
 <div class="w-100"></div>
-<div class="col-10">
+<div class="col-10 mb-5">
   <div class="mt-4">
     <%= form_with model: [@recipe, @recipe_comment] do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントをここに", size: "30x5" %>
+    <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに", size: "30x5" %>
     <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>
   </div>

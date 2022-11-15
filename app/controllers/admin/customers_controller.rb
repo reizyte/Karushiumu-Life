@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @recipes = Recipe.all
+    @recipes = @customer.recipes
   end
 
   def edit

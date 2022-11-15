@@ -2,15 +2,13 @@
   <div class="row mb-5">
     <div class="col-5 h3">みんなのCaレシピ</div>
     <div class="col-6">
-    <%= search_form_for @q do |f| %>
+      <%= search_form_for @q do |f| %>
       <div class="input-group">
         <%= f.search_field :dish_name_or_cooking_materials_material_name_cont, size: 40, placeholder: "レシピ、材料で検索" %><%= f.submit '検索', class: "btn btn-primary" %>
       </div>
-    <% end %>
+      <% end %>
     </div>
-    </div>
-
-
+  </div>
 
   <div class="row">
     <div class="col-2 border">
@@ -22,17 +20,23 @@
               <td><%= link_to genre.name, recipes_path(genre_id: genre.id), class: "text-dark" %></td>
             </tr>
           <% end %>
-          
-          <p>タグ</p>
-      <% @tag_list.each do |tag| %>
-      <p><%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>
-          <%="(#{tag.recipes.count})" %>
-      </p>
-      <% end %>
+        </tbody>
+      </table>
+
+      <p class="mt-5">タグから選ぶ</p>
+      <table class="table">
+        <tbody>
+          <% @tag_list.each do |tag| %>
+            <tr>
+              <td>
+                  <%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>
+                  <%="(#{tag.recipes.count})" %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
-
     <div class="col-10">
       <div class="row">
         <% @recipes.each do |recipe| %>
