@@ -18,7 +18,7 @@ class Public::RecipesController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @recipes = @genre.recipes
     end
-    #@tag_list = Tag.all
+    @tag_list = Tag.all
   end
 
   def show
