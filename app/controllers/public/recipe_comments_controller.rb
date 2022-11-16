@@ -1,5 +1,5 @@
 class Public::RecipeCommentsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except:[:destroy]
   def create
     recipe = Recipe.find(params[:recipe_id])
     @comment = current_customer.recipe_comments.new(recipe_comment_params)

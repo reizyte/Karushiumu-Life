@@ -67,16 +67,18 @@
   </div>
 
 <div class="col-10">
-    <% @recipe.recipe_comments.each do |recipe_comment| %>
-    <p class="mr-3"><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %><%= recipe_comment.customer.name %></p>
-    <p class="mr-3"><%= recipe_comment.created_at.strftime('%Y/%m/%d') %></p>
-    <p><%= recipe_comment.comment %></p>
 
-    <% if recipe_comment.customer == current_customer || admin_signed_in? %>
-    <%= link_to "コメント削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger mb-5" %>
-    <% end %>
+    <% @recipe.recipe_comments.each do |recipe_comment| %>
+      <p class="mr-3"><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %><%= recipe_comment.customer.name %></p>
+      <!--<p class="mr-3"><%#= recipe_comment.created_at.strftime('%Y/%m/%d') %></p>-->
+      <p><%= recipe_comment.comment %></p>
+  
+      <% if recipe_comment.customer == current_customer || admin_signed_in? %>
+        <%= link_to "コメント削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger mb-5" %>
+      <% end %>
     <% end %>
     </div>
+
 
 
   </div>
