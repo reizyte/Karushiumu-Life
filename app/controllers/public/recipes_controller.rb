@@ -43,7 +43,7 @@ class Public::RecipesController < ApplicationController
     tag_list = params[:recipe][:tag_name].split("、")
     if @recipe.save
       @recipe.save_tag(tag_list)
-    redirect_to recipe_path(@recipe)
+    redirect_to recipe_path(@recipe), notice: "レシピの投稿に成功しました！"
     else
     render :new
     end

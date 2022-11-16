@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="row mt-5">
+ <%= render "layouts/flash_message" %>
+
+  <div class="row mt-5" style="background-color: papayawhip;">
     <div class="col-4">
       <div><%= image_tag @customer.get_profile_image, size: "120x120" %></div>
     </div>

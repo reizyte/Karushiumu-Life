@@ -1,5 +1,5 @@
   <p>材料</p>
-  <%= f.number_field :serving, min: 1, max:15, id: "serving" %>人前
+  <%= f.number_field :serving, min: 1, max:15 %>人分
   <%= f.text_field :cooking_time, placeholder: "時間" %>分
 <%= f.fields_for :cooking_materials do |t| %>
   <%= render "cooking_material_fields", f: t %>

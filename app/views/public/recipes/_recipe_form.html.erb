@@ -6,11 +6,11 @@
     </tr>
     <tr>
       <td><%= f.label :dish_name, "レシピのタイトル" %></td>
-      <td><%= f.text_field :dish_name, class: "form-control" %></td>
+      <td><%= f.text_field :dish_name, class: "form-control", placeholder: "例：簡単！牛乳のクリームパスタ" %></td>
     </tr>
     <tr>
       <td><%= f.label :explanation, "レシピ紹介文" %></td>
-      <td><%= f.text_area :explanation, class: "form-control" %></td>
+      <td><%= f.text_area :explanation, class: "form-control", placeholder: "例：牛乳をふんだんに使いました！" %></td>
     </tr>
   </tbody>
 </table>
