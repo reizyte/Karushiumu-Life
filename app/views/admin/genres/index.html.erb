@@ -10,7 +10,7 @@
 <% end %>
   <br>
   <h4>ジャンル一覧</h4>
-  <table class="table table-hover">
+  <table class="col-7 table table-hover">
     <thead>
       <tr>
         <th>ジャンル名</th>
@@ -21,7 +21,8 @@
     <% @genres.each do |genre| %>
       <tr>
         <td><%= genre.name %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>
+        <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success mr-3" %>
+            <%= link_to "削除する", admin_genre_path(genre), method: :delete, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
     </tbody>

@@ -38,11 +38,15 @@
       </table>
     </div>
     <div class="col-10">
+      <% if @recipes.exists? %>
       <div class="row">
         <% @recipes.each do |recipe| %>
           <%= render "public/customers/recipe", recipe: recipe %>
         <% end %>
       </div>
     </div>
+    <% else %>
+    <p class="text-center">レシピはまだありません。あなたが第一号になりませんか(・ω・)ノ</p>
+    <% end %>
   </div>
 </div>

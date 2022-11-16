@@ -1,9 +1,14 @@
 <div class="container">
-  <div class="row">
-    <% @recipes.each do |recipe| %>
-      <%= render "public/customers/recipe", recipe: recipe %>
-    <% end %>
-  </div>
+  <h4><%= @tag.tag_name %>のレシピ</h4>
+  <% if @recipes.exists? %>
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+        <%= render "public/customers/recipe", recipe: recipe %>
+      <% end %>
+    </div>
+      <% else %>
+    <p>こちらのタグのついたレシピはありません。</p>
+  <% end %>
 </div>
 
 
