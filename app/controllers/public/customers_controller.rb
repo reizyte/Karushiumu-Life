@@ -29,7 +29,7 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  #ブックマーク一覧
+  #お気に入り一覧
   def favorites
     @customer = Customer.find(params[:id])
     favorites= Favorite.where(customer_id: @customer.id).pluck(:recipe_id)
@@ -45,7 +45,6 @@ class Public::CustomersController < ApplicationController
   def ensure_correct_customer
     @customer = Customer.find(params[:id])
     unless @customer == current_customer
-  # # #if @current_user.id != params[:id].to_i
       redirect_to customer_path(current_customer)
     end
   end

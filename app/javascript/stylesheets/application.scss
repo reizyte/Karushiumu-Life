@@ -1,15 +1,21 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-.jumbotron-extend {
+.top_visual {
   width: 100%;
-  height: 500px;
-  background-position: top center;
-  background-image: url("../images/top.jpg");
+  height: 600px;
+  // background-position: left center;
+  background-image: url("../images/about4.jpg");
   background-size: cover;
 }
 
-
+.about_visual {
+  width: 100%;
+  height: 500px;
+   background-position: top center;
+  background-image:  url("../images/about.jpg");
+  background-size: cover;
+}
 
 footer {
     background-color: #33383c;

@@ -6,14 +6,13 @@
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
       <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
       <p><%= image_tag @recipe.get_image, size:"300x300" %></p>
-      <% if @recipe_tags.exists? %>
-      <p>タグ</p>
+      
       <% @recipe_tags.each do |tag| %>
       <p><%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>
           <%="(#{tag.recipes.count})" %>
       </p>
       <% end %>
-      <% end %>
+      
     </div>
 
     <div class="col-5 mt-5">

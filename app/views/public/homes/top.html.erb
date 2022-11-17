@@ -1,11 +1,23 @@
-<h3>TOP</h3>
 <div class="container">
   <%= render "layouts/flash_message" %>
   <div class="row">
-    <div class="jumbotron jumbotron-extend">
-      <h2 class="mb-2">カルシウムLifeへようこそ！</h2>
-      <h5>カルシウム豊富な食材を使ったレシピで<br>
-          あなたの骨や歯を元気に！</h5>
+    <div class="top_visual">
+      <div class="d-flex align-items-center justify-content-center" style="height:600px; background-color:rgba(255,255,255,0.2);">
+      <h1>カルシウムLifeへようこそ！</h1>
+          </div>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <h5 class="text-center mt-5 mb-3">
+      カルシウム豊富な食材を使ったレシピで、
+      あなたの骨や歯を元気にしませんか？<br>
+      たくさんのレシピの投稿、閲覧、お待ちしております！
+    </h5>
+    <div class="w-100"></div>
+    <div class="row">
+      <%= link_to "新規会員登録はこちら", new_customer_registration_path, class: "btn btn-primary mr-5" %>
+      <%= link_to "ログインはこちら",new_customer_session_path, class: "btn btn-success" %>
+    </div>
+  </div>
+
 </div>
