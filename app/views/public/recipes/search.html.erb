@@ -3,7 +3,7 @@
   <% if @recipes.exists? %>
     <div class="row">
       <% @recipes.each do |recipe| %>
-        <%= render "public/customers/recipe", recipe: recipe %>
+        <%= render "public/recipes/recipe", recipe: recipe %>
       <% end %>
     </div>
       <% else %>

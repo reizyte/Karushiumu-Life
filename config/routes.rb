@@ -18,15 +18,13 @@ Rails.application.routes.draw do
     # patch "customers/information" => "customers#update", as: "update_information"
     get "customers/:id/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
     patch "customers/:id/withdraw" => "customers#withdraw", as: "withdraw_customer"
+    get "recipes/search" => "recipes#search"
 
     resources :customers, only:[:show, :edit, :update] do
       member do
         get :favorites
       end
     end
-
-
-      get "recipes/search" => "recipes#search"
 
 
     resources :recipes, only:[:new, :index, :show, :create, :destroy] do

@@ -23,7 +23,7 @@ class Admin::GenresController < ApplicationController
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to request.referer
+    redirect_to request.referer, notice:"ジャンルが削除されました。"
   end
 
   def update

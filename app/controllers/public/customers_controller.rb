@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @recipes = @customer.recipes
+    @recipes = @customer.recipes.page(params[:page])
   end
 
   def edit
@@ -32,8 +32,9 @@ class Public::CustomersController < ApplicationController
   #お気に入り一覧
   def favorites
     @customer = Customer.find(params[:id])
-    favorites= Favorite.where(customer_id: @customer.id).pluck(:recipe_id)
-    @favorite_recipes = Recipe.find(favorites)
+#    favorites= Favorite.where(customer_id: @customer.id).pluck(:recipe_id)
+    @favorites = @customer.favorites.includes(:recipe).page(params[:page])
+    #@favorite_recipes = Recipe.find(favorites)
   end
 
   private

@@ -22,7 +22,8 @@
   <h5 class="mt-5">投稿したレシピ</h5>
   <div class="row">
     <% @recipes.each do |recipe| %>
-      <%= render "recipe", recipe: recipe %>
+      <%= render "public/recipes/recipe", recipe: recipe %>
     <% end %>
+    <%= paginate @recipes %>
   </div>
   </div>

@@ -10,8 +10,8 @@ class Recipe < ApplicationRecord
   has_many :tags, through: :recipe_tags
   accepts_nested_attributes_for :cooking_materials, :how_to_makes, allow_destroy: true
 
-  validates :dish_name, presence: true, length: {maximum: 35}
-  validates :explanation, presence: true, length: {maximum: 150}
+  validates :dish_name, presence: true
+  validates :explanation, presence: true
   validates :cooking_time, presence: true
   validates :serving, presence: true
   validates :image, presence: true

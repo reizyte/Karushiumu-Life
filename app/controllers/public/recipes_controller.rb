@@ -10,13 +10,13 @@ class Public::RecipesController < ApplicationController
   def index
     #キーワード検索
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result(distinct: true)
+    @recipes = @q.result(distinct: true).page(params[:page])
     #ジャンル検索
     @genres = Genre.all
     if params[:genre_id].present?
       #presentメソッドでparams[:genre_id]に値が含まれているか確認 => trueの場合下記を実行
       @genre = Genre.find(params[:genre_id])
-      @recipes = @genre.recipes
+      @recipes = @genre.recipes.page(params[:page])
     end
     @tag_list = Tag.all
   end
@@ -52,7 +52,7 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to customer_path(current_customer)
+    redirect_to customer_path(current_customer), notice: "レシピを削除しました。"
   end
 
   private

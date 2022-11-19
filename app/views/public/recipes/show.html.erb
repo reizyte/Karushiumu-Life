@@ -1,7 +1,8 @@
 <div class="container">
-  <%= render "layouts/flash_message" %>
   <div class="row justify-content-center">
     <div class="col-5">
+      <%= render "layouts/flash_message" %>
+      <%= render "layouts/errors", obj: @recipe %>
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
       <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
@@ -56,15 +57,21 @@
 <p>コメント件数<%= @recipe.recipe_comments.count %></p>
 <div class="w-100"></div>
 
-<div class="w-100"></div>
+<% if customer_signed_in? %>
 <div class="col-10 mb-5">
   <div class="mt-4">
+
     <%= form_with model: [@recipe, @recipe_comment] do |f| %>
     <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに", size: "30x5" %>
     <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>
+
   </div>
   </div>
+  <% else %>
+  <p class="text-center border-bottom">会員登録すると、レシピにコメントをすることができます。</p>
+    <% end %>
+
 
 <div class="col-10">
 

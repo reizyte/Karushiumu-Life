@@ -41,12 +41,15 @@
       <% if @recipes.exists? %>
       <div class="row">
         <% @recipes.each do |recipe| %>
-          <%= render "public/customers/recipe", recipe: recipe %>
+          <%= render "public/recipes/recipe", recipe: recipe %>
         <% end %>
       </div>
     </div>
     <% else %>
-    <p class="text-center"><%= @genre.name %>のレシピはまだありません。あなたが第一号になりませんか(・ω・)ノ</p>
+    <p class="text-center"><%= @genre.name %>のレシピはまだありません。</p>
     <% end %>
+    
+    <%= paginate @recipes %>
+    
   </div>
 </div>

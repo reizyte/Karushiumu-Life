@@ -1,5 +1,21 @@
 ja:
   activerecord:
+    models:
+      recipe: "レシピ"
+      cooking_material: "レシピの材料"
+      how_to_make: "レシピの作り方"
+    attributes:
+      recipe:
+        dish_name: "レシピのタイトル"
+        explanation: "レシピ紹介文"
+        cooking_time: "調理時間"
+        serving: "何人分か"
+        image: "料理画像"
+      cooking_materials:
+        quantity: "分量"
+        material_name: "材料"
+      how_to_makes:
+        cooking_procedure: "作り方"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -205,7 +221,10 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
-  # activemodel:
-  #   attributes:
-  #     recipe:
-  #       dish_name: "料理のタイトル"
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...
