@@ -22,6 +22,7 @@ ja:
         name: "名前"
         password: "パスワード"
         email: "メールアドレス"
+        introduction: "自己紹介"
       genre:
         name: "ジャンル名"
 

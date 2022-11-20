@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "退会しました。またのご利用お待ちしております。"
   end
 
   #お気に入り一覧

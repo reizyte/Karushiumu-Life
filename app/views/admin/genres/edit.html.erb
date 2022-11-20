@@ -1,9 +1,11 @@
 <div class="container">
   <h3>ジャンル編集</h3>
   <%= render "layouts/errors", obj: @genre %>
-  <%= form_with model:@genre, url: admin_genre_path(@genre), method: :patch do |f| %>
-	<%= f.label :name, "ジャンル名" %>
-	<%= f.text_field :name %>
-	<%= f.submit "変更を保存", class: "btn btn-primary" %>
-<% end %>
+  <div class="row mt-5">
+    <%= form_with model:@genre, url: admin_genre_path(@genre), method: :patch do |f| %>
+	    <%= f.label :name, "ジャンル名" %>
+	    <%= f.text_field :name %>
+	    <%= f.submit "変更を保存", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>

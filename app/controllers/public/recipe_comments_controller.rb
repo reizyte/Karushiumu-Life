@@ -6,6 +6,10 @@ class Public::RecipeCommentsController < ApplicationController
     @comment.recipe_id = recipe.id
     @comment.save
     redirect_to request.referer
+    # else
+    #   @recipe_comment = RecipeComment.new
+    #   render "public/recipes/show"
+    # end
   end
 
   def destroy

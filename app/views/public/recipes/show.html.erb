@@ -2,6 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-5">
 
+<%#= render "layouts/errors", obj: @recipe_comment %>
+
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
       <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
@@ -61,7 +63,7 @@
   <div class="mt-4">
 
     <%= form_with model: [@recipe, @recipe_comment] do |f| %>
-    <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに", size: "30x5" %>
+    <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに（150字まで）", size: "30x5" %>
     <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>
 

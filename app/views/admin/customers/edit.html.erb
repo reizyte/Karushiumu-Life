@@ -6,19 +6,19 @@
         <table class="table table-borderless">
           <tbody>
             <tr>
-              <td>会員ID</td>
+              <td><%= f.label :id, "会員ID" %></td>
               <td><%= @customer.id %></td>
             </tr>
             <tr>
-              <td>氏名</td>
+              <td><%= f.label :name, "氏名" %></td>
               <td><%= f.text_field :name, class: "form-control"%></td>
             </tr>
             <tr>
-              <td>メールアドレス</td>
+              <td><%= f.label :email, "メールアドレス" %></td>
               <td><%= f.text_field :email, class: "form-control" %></td>
             </tr>
             <tr>
-              <td>会員ステータス</td>
+              <td><%= f.label :is_deleted, "会員ステータス" %></td>
               <td>
                   <%= f.radio_button :is_deleted, false %>
                   <%= f.label :is_deleted, "有効", value: false %>
