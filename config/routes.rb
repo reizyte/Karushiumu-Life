@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
     get "homes/about" => "homes#about", as: "about"
-    # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えています。
-    #get "customers/information/edit" => "customers#edit", as: "edit_information"
-    # patch "customers/information" => "customers#update", as: "update_information"
     get "customers/:id/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
     patch "customers/:id/withdraw" => "customers#withdraw", as: "withdraw_customer"
     get "recipes/search" => "recipes#search"
@@ -43,9 +40,4 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :edit, :create, :destroy, :update]
     resources :customers, only:[:show, :edit, :update]
   end
-
-
-
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

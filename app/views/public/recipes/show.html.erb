@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-5">
-      <%= render "layouts/flash_message" %>
-      <%= render "layouts/errors", obj: @recipe %>
+
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
       <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>

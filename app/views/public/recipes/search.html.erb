@@ -5,6 +5,10 @@
       <% @recipes.each do |recipe| %>
         <%= render "public/recipes/recipe", recipe: recipe %>
       <% end %>
+      <div class="w-100"></div>
+      <div class="ml-auto">
+      <%= paginate @recipes %>
+      </div>
     </div>
       <% else %>
     <p>こちらのタグのついたレシピはありません。</p>

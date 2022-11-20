@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_genre, only: [:edit, :destroy, :update]
 
   def index
     @genre = Genre.new
@@ -7,7 +8,6 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-     @genre = Genre.find(params[:id])
   end
 
   def create
@@ -21,13 +21,13 @@ class Admin::GenresController < ApplicationController
   end
 
   def destroy
-    @genre = Genre.find(params[:id])
+    #@genre = Genre.find(params[:id])
     @genre.destroy
     redirect_to request.referer, notice:"ジャンルが削除されました。"
   end
 
   def update
-    @genre = Genre.find(params[:id])
+    #@genre = Genre.find(params[:id])
     if @genre.update(genre_params)
        redirect_to admin_genres_path, notice: "ジャンルが更新されました！"
     else
@@ -36,6 +36,10 @@ class Admin::GenresController < ApplicationController
   end
 
   private
+
+  def set_genre
+    @genre = Genre.find(params[:id])
+  end
 
   def genre_params
     params.require(:genre).permit(:name)

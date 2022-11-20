@@ -4,6 +4,8 @@ ja:
       recipe: "レシピ"
       cooking_material: "レシピの材料"
       how_to_make: "レシピの作り方"
+      customer: "会員"
+      genre: "ジャンル"
     attributes:
       recipe:
         dish_name: "レシピのタイトル"
@@ -16,6 +18,13 @@ ja:
         material_name: "材料"
       how_to_makes:
         cooking_procedure: "作り方"
+      customer:
+        name: "名前"
+        password: "パスワード"
+        email: "メールアドレス"
+      genre:
+        name: "ジャンル名"
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

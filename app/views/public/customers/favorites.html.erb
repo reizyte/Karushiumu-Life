@@ -2,9 +2,16 @@
   <div class="row">
     <h4>お気に入りレシピ</h4>
     <div class="w-100 mb-5"></div>
+    <% if @favorites.exists? %>
       <% @favorites.each do |favorite|%>
         <%= render "public/recipes/recipe", recipe: favorite.recipe %>
+      <% end %>
+    <% else %>
+      <p>お気に入りのレシピはまだありません。</p>
     <% end %>
-    <%= paginate @favorites %>
+    <div class="w-100"></div>
+    <div class="ml-auto">
+      <%= paginate @favorites %>
+    </div>
    </div>
  </div>

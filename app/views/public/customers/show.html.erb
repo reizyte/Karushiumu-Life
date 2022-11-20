@@ -5,7 +5,7 @@
     <div class="col-3">
       <div><%= image_tag @customer.get_profile_image, size: "120x120" %></div>
     </div>
-    <div class="col-8 border">
+    <div class="col-8">
       <h4><%= @customer.name %></h4>
       <h5><%= @customer.introduction %></h5>
     </div>
@@ -13,7 +13,9 @@
 
   <% if @customer == current_customer %>
     <div class="row mt-5">
+      <% if @customer.name != "guestcustomer" %>
       <%= link_to "プロフィール編集する", edit_customer_path(@customer), class: "btn btn-success mr-3" %>
+      <% end %>
       <%= link_to "お気に入り一覧", favorites_customer_path(@customer), class: "btn btn-warning mr-3" %>
       <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-info" %>
     </div>
@@ -24,6 +26,9 @@
     <% @recipes.each do |recipe| %>
       <%= render "public/recipes/recipe", recipe: recipe %>
     <% end %>
+    <div class="w-100"></div>
+    <div class="ml-auto">
     <%= paginate @recipes %>
+    </div>
   </div>
   </div>
