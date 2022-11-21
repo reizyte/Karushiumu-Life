@@ -14,13 +14,13 @@ class Recipe < ApplicationRecord
   validates :explanation, presence: true, length: {maximum: 100}
   validates :cooking_time, presence: true
   validates :serving, presence: true
-  validates :image, presence: true
 
-  #アイコン画像が無い場合
+  #レシピ画像が無い場合
   def get_image
-    (image.attached?) ? image : 'no_image.png'
+    (image.attached?) ? image : "recipe_no_image.png"
   end
 
+  #引数の会員idがFavoritesテーブル内に存在（exists?）するかどうか調べる
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end

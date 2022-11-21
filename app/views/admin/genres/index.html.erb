@@ -1,6 +1,7 @@
 <!--ジャンル一覧・ジャンル新規登録画面-->
 <div class="container">
   <%= render "layouts/flash_message" %>
+  <%= render "layouts/errors", obj: @genre %>
   <h3 class="mb-5">ジャンル管理</h3>
   <h5 class="mb-4">ジャンルの新規登録をする</h5>
   <%= form_with model:@genre, url: admin_genres_path, method: :post do |f| %>

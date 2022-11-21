@@ -6,7 +6,7 @@ class Public::RecipeCommentsController < ApplicationController
     @recipe_comment = current_customer.recipe_comments.new(recipe_comment_params)
     @recipe_comment.recipe_id = @recipe.id
     if @recipe_comment.save
-    redirect_to recipe_path(@recipe), notice: "コメントの投稿に成功しました！"
+      redirect_to recipe_path(@recipe), notice: "コメントの投稿に成功しました！"
     else
       @cooking_materials = @recipe.cooking_materials
       @how_to_makes = @recipe.how_to_makes

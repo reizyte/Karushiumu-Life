@@ -24,8 +24,12 @@
 
   <h5 class="mt-5">投稿したレシピ</h5>
   <div class="row">
-    <% @recipes.each do |recipe| %>
-      <%= render "public/recipes/recipe", recipe: recipe %>
+    <% if @recipes.exists? %>
+      <% @recipes.each do |recipe| %>
+        <%= render "public/recipes/recipe", recipe: recipe %>
+      <% end %>
+    <% else %>
+      <p class="text-center">投稿したレシピはありません。</p>
     <% end %>
     <div class="w-100"></div>
     <div class="ml-auto"><%= paginate @recipes %></div>

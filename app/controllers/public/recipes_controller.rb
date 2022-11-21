@@ -8,7 +8,6 @@ class Public::RecipesController < ApplicationController
     @how_to_makes = @recipe.how_to_makes.build  #親モデル.子モデル.buildで子モデルのインスタンス作成
   end
 
-
   def index
     #キーワード検索
     @q = Recipe.ransack(params[:q])
@@ -36,13 +35,13 @@ class Public::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.customer = current_customer
+    @recipe.customer_id = current_customer.id
     tag_list = params[:recipe][:tag_name].split("、")  # 受け取った値を「、」で区切って配列にする
     if @recipe.save
       @recipe.save_tag(tag_list)
-    redirect_to recipe_path(@recipe), notice: "レシピの投稿に成功しました！"
+      redirect_to recipe_path(@recipe), notice: "レシピの投稿に成功しました！"
     else
-    render :new
+      render :new
     end
   end
 

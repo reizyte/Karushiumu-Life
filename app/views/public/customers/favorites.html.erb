@@ -8,7 +8,7 @@
         <%= render "public/recipes/recipe", recipe: favorite.recipe %>
       <% end %>
     <% else %>
-      <p>お気に入りのレシピはまだありません。</p>
+      <p>お気に入りのレシピはまだありません。気になるレシピに☆をつけてみましょう！</p>
     <% end %>
     <div class="w-100"></div>
     <div class="ml-auto"><%= paginate @favorites %></div>
