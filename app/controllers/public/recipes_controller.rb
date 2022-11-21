@@ -19,7 +19,12 @@ class Public::RecipesController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @recipes = @genre.recipes.page(params[:page])
     end
+    #タグ検索
     @tag_list = Tag.all
+    if params[:tag_id].present?  #presentメソッドでparams[:tag_id]に値が含まれているか確認 => trueの場合下記を実行
+      @tag = Tag.find(params[:tag_id])
+      @recipes = @tag.recipes.page(params[:page])
+    end
   end
 
   def show
@@ -27,13 +32,6 @@ class Public::RecipesController < ApplicationController
     @how_to_makes = @recipe.how_to_makes
     @recipe_comment = RecipeComment.new
     @recipe_tags = @recipe.tags
-  end
-
-
-  def search
-    @tag_list = Tag.all
-    @tag = Tag.find(params[:tag_id])
-    @recipes = @tag.recipes.page(params[:page])
   end
 
   def create

@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-5">
       <%= render "layouts/flash_message" %>
-      <%#= render "layouts/errors", obj: @recipe_comment %>
+      <%= render "layouts/errors", obj: @recipe_comment %>
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
       <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
@@ -11,7 +11,7 @@
 
       <!--レシピのタグ-->
       <% @recipe_tags.each do |tag| %>
-        <p><%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id) %>
+        <p><%= link_to tag.tag_name, recipes_path(tag_id: tag.id) %>
             <%="(#{tag.recipes.count})" %>
         </p>
       <% end %>
@@ -51,8 +51,8 @@
     </div>
   </div>
 
-
   <!--以下コメント機能-->
+
   <div class="row justify-content-center mt-5">
     <h5 class="border-bottom">コメントはこちら</h5>
     <div class="w-100"></div>

@@ -6,6 +6,7 @@ ja:
       how_to_make: "レシピの作り方"
       customer: "会員"
       genre: "ジャンル"
+      recipe_comment: "レシピのコメント"
     attributes:
       recipe:
         dish_name: "レシピのタイトル"
@@ -25,6 +26,8 @@ ja:
         introduction: "自己紹介"
       genre:
         name: "ジャンル名"
+      recipe_comment:
+        comment: "コメント"
 
     errors:
       messages:

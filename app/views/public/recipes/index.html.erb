@@ -33,7 +33,7 @@
           <% @tag_list.each do |tag| %>
             <tr>
               <td>
-                  <%= link_to tag.tag_name, recipes_search_path(tag_id: tag.id), class: "text-dark" %>
+                  <%= link_to tag.tag_name, recipes_path(tag_id: tag.id), class: "text-dark" %>
                   <%="(#{tag.recipes.count})" %>
               </td>
             </tr>
