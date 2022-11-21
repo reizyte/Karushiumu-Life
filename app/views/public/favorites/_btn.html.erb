@@ -1,13 +1,15 @@
+<!--お気に入りボタン-->
+<!--ログインしている会員のみお気に入りボタンを表示させる-->
 <% if customer_signed_in? %>
-<% if recipe.favorited_by?(current_customer) %>
-  <%= link_to recipe_favorites_path(recipe), method: :delete, remote: true, class: "link text-dark" do %>
-    お気に入り<i class="fas fa-star" style="color: gold;"></i>
-    <%= recipe.favorites.count %>
+  <% if recipe.favorited_by?(current_customer) %>
+    <%= link_to recipe_favorites_path(recipe), method: :delete, remote: true, class: "link text-dark" do %>
+      お気に入り<i class="fas fa-star" style="color: gold;"></i>
+      <%= recipe.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to recipe_favorites_path(recipe), method: :post, remote: true, class: "link text-dark" do %>
+      お気に入り<i class="far fa-star"></i>
+      <%= recipe.favorites.count %>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to recipe_favorites_path(recipe), method: :post, remote: true, class: "link text-dark" do %>
-    お気に入り<i class="far fa-star"></i>
-    <%= recipe.favorites.count %>
-  <% end %>
-<% end %>
 <% end %>

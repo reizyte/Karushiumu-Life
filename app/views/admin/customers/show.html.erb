@@ -1,3 +1,4 @@
+<!--管理者側/会員詳細画面-->
 <div class="container">
   <%= render "layouts/flash_message" %>
   <div class="row">
@@ -39,8 +40,6 @@
       <%= render "public/recipes/recipe", recipe: recipe %>
     <% end %>
     <div class="w-100"></div>
-    <div class="ml-auto">
-      <%= paginate @recipes %>
-    </div>
+    <div class="ml-auto"><%= paginate @recipes %></div>
   </div>
 </div>

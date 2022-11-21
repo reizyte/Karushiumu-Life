@@ -1,12 +1,14 @@
+<!--会員TOP画面-->
 <div class="container">
   <%= render "layouts/flash_message" %>
   <div class="row">
     <div class="top_visual">
       <div class="d-flex align-items-center justify-content-center" style="height:600px; background-color:rgba(255,255,255,0.2);">
-      <h1>カルシウムLifeへようこそ！</h1>
-          </div>
+        <h1>カルシウムLifeへようこそ！</h1>
+      </div>
     </div>
   </div>
+
   <div class="row justify-content-center">
     <h5 class="text-center mt-5 mb-3">
       カルシウム豊富な食材を使ったレシピで、
@@ -15,11 +17,8 @@
     </h5>
     <div class="w-100"></div>
     <div class="row">
-
       <%= link_to "新規会員登録はこちら", new_customer_registration_path, class: "btn btn-primary col-10 mb-3" %>
       <%= link_to "ログインはこちら",new_customer_session_path, class: "btn btn-success col-10" %>
-
     </div>
   </div>
-
 </div>

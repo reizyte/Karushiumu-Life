@@ -7,7 +7,10 @@ class Public::RecipeCommentsController < ApplicationController
     @comment.save
     redirect_to request.referer
     # else
+    #   @cooking_materials = @recipe.cooking_materials
+    #   @how_to_makes = @recipe.how_to_makes
     #   @recipe_comment = RecipeComment.new
+    #   @recipe_tags = @recipe.tags
     #   render "public/recipes/show"
     # end
   end

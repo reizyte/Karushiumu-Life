@@ -1,44 +1,52 @@
+<!--レシピ投稿画面-->
 <div class="container">
-    <h3>レシピ登録</h3>
-
-    <%= render "layouts/errors", obj: @recipe %>
-
-    <%= form_with model:@recipe, url:recipes_path, method: :post do |f| %>
+  <h3>レシピを投稿する</h3>
+  <%= render "layouts/errors", obj: @recipe %>
+  <%= form_with model:@recipe, url:recipes_path, method: :post do |f| %>
     <div class="row mb-5">
-        <div class="col-6">
-            <%= render "recipe_form", {recipe: @recipe, f: f} %>
-        </div>
-        <div class="col-6">
-            <%= render "material_form", {recipe: @recipe, f: f} %>
-        </div>
+      <div class="col-6">
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :image, "レシピ画像" %></td>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :dish_name, "レシピのタイトル" %></td>
+              <td><%= f.text_field :dish_name, class: "form-control", placeholder: "例：簡単！牛乳のクリームパスタ" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :explanation, "レシピ紹介文" %></td>
+              <td><%= f.text_area :explanation, class: "form-control", placeholder: "例：牛乳をふんだんに使いました！" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-6">
+        <%= render "material", {recipe: @recipe, f: f} %>
+      </div>
     </div>
 
     <div class="row border-top">
-        <div class="col-6 mt-5">
-        <%= render "make_form", {recipe: @recipe, f: f} %>
-        </div>
+      <div class="col-6 mt-5">
+        <%= render "make", {recipe: @recipe, f: f} %>
+      </div>
 
-
-<div class="col-5 offset-1 mt-5" style="background-color: papayawhip;">
-        <p>"、"で区切ることで、複数のタグを付けることができます。</p>
+      <div class="col-5 offset-1 mt-5" style="background-color: linen;">
+        <p> "、"で区切ることで、複数のタグを付けることができます。</p>
         <p>使用した材料に応じて、<br>
-        牛乳・乳製品、大豆製品、魚介類、野菜・海藻類、<br>
-        とタグをつけてみましょう！</p>
+            牛乳・乳製品、大豆製品、魚介類、野菜・海藻類、<br>
+            とタグをつけてみましょう！
+        </p>
         <p>※タグ無しでも投稿は可能です。</p>
-        <p class="mt-2">タグ</p>
+        <p>タグ</p>
         <p><%= f.text_field :tag_name, placeholder: "牛乳・乳製品、大豆製品" %></p>
 
-
-
-            <p>ジャンル</p>
-
-			<div class="select_field mb-5"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
-            <%= f.submit "投稿する", class: "btn btn-primary" %>
-
-        </div>
-        </div>
-
-            <% end %>
-
-
+        <p>ジャンル</p>
+        <div class="select_field mb-5"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
+        <%= f.submit "投稿する", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
 </div>

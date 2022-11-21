@@ -1,9 +1,8 @@
+<!--材料・分量のフォームと削除-->
 <div class="nested-fields">
   <div class="row">
     <div class="col-5"><%= f.text_field :material_name, class: "form-control", placeholder: "材料" %></div>
     <div class="col-3 offset-1"><%= f.text_field :quantity, class: "form-control", placeholder: "分量" %></div>
-    <div class="col-2 offset-1">
-      <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %>
-    </div>
+    <div class="col-2 offset-1"><%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %></div>
   </div>
-  </div>
+</div>

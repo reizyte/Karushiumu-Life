@@ -1,15 +1,19 @@
+<!--レシピ一覧画面-->
 <div class="container">
   <div class="row mb-5">
     <div class="col-5 h3">みんなのCaレシピ</div>
+
+    <!--検索機能-->
     <div class="col-6">
       <%= search_form_for @q do |f| %>
-      <div class="input-group">
-        <%= f.search_field :dish_name_or_cooking_materials_material_name_cont, size: 40, placeholder: "レシピ、材料で検索" %><%= f.submit '検索', class: "btn btn-primary" %>
-      </div>
+        <div class="input-group">
+          <%= f.search_field :dish_name_or_cooking_materials_material_name_cont, size: 40, placeholder: "レシピ、材料で検索" %><%= f.submit '検索', class: "btn btn-primary" %>
+        </div>
       <% end %>
     </div>
   </div>
 
+  <!--サイドバー-->
   <div class="row">
     <div class="col-2 border">
       <p class="mt-3">メニューから選ぶ</p>
@@ -37,23 +41,19 @@
         </tbody>
       </table>
     </div>
+
     <div class="col-10">
       <% if @recipes.exists? %>
-      <div class="row">
-        <% @recipes.each do |recipe| %>
-          <%= render "public/recipes/recipe", recipe: recipe %>
-        <% end %>
-        <div class="w-100"></div>
-        <div class="ml-auto">
-        <%= paginate @recipes %>
+        <div class="row">
+          <% @recipes.each do |recipe| %>
+            <%= render "public/recipes/recipe", recipe: recipe %>
+          <% end %>
+          <div class="w-100"></div>
+          <div class="ml-auto"><%= paginate @recipes %></div>
         </div>
-      </div>
+      <% else %>
+        <p class="text-center">レシピはまだありません。</p>
+      <% end %>
     </div>
-    <% else %>
-    <p class="text-center"><%= @genre.name %>のレシピはまだありません。</p>
-    <% end %>
-
-
-
   </div>
 </div>

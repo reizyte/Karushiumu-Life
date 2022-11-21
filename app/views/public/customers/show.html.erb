@@ -1,6 +1,6 @@
+<!--会員側/会員詳細画面-->
 <div class="container">
- <%= render "layouts/flash_message" %>
-
+  <%= render "layouts/flash_message" %>
   <div class="row mt-5">
     <div class="col-3">
       <div><%= image_tag @customer.get_profile_image, size: "120x120" %></div>
@@ -11,12 +11,13 @@
     </div>
   </div>
 
+  <!--他会員のプロフィール編集・お気に入りレシピ・レシピ投稿のリンクは表示させない-->
   <% if @customer == current_customer %>
     <div class="row mt-5">
-      <% if @customer.name != "guestcustomer" %>
-      <%= link_to "プロフィール編集する", edit_customer_path(@customer), class: "btn btn-success mr-3" %>
+      <% if @customer.name != "guestcustomer" %><!--ゲスト会員はプロフィール編集不可-->
+        <%= link_to "プロフィール編集する", edit_customer_path(@customer), class: "btn btn-success mr-3" %>
       <% end %>
-      <%= link_to "お気に入り一覧", favorites_customer_path(@customer), class: "btn btn-warning mr-3" %>
+      <%= link_to "お気に入りレシピ", favorites_customer_path(@customer), class: "btn btn-warning mr-3" %>
       <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-info" %>
     </div>
   <% end %>
@@ -27,8 +28,6 @@
       <%= render "public/recipes/recipe", recipe: recipe %>
     <% end %>
     <div class="w-100"></div>
-    <div class="ml-auto">
-    <%= paginate @recipes %>
-    </div>
+    <div class="ml-auto"><%= paginate @recipes %></div>
   </div>
-  </div>
+</div>
