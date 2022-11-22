@@ -36,9 +36,7 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.customer_id = current_customer.id
-    tag_list = params[:recipe][:tag_name].split("、")  # 受け取った値を「、」で区切って配列にする
     if @recipe.save
-      @recipe.save_tag(tag_list)
       redirect_to recipe_path(@recipe), notice: "レシピの投稿に成功しました！"
     else
       render :new
@@ -58,9 +56,9 @@ class Public::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:dish_name, :explanation, :cooking_time, :serving, :image, :genre_id,
-                                  how_to_makes_attributes:[:id, :cooking_procedure, :_destroy],
-                                  cooking_materials_attributes:[:id, :material_name, :quantity, :_destroy]
-                                  )
-
+      tag_ids: [],
+      how_to_makes_attributes: [:id, :cooking_procedure, :_destroy],
+      cooking_materials_attributes: [:id, :material_name, :quantity, :_destroy]
+    )
   end
 end
