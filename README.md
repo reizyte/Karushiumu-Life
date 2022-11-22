@@ -20,8 +20,8 @@
  - 作った料理を投稿したい際
 
 ## 設計書
-[ER図](https://drive.google.com/file/d/1xNl5tXauCuh39gGXG9xH6nAS-z_eVPVb/view?usp=sharing)
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1b9x0Kse2fSMfFRaFrFSp2wrEoz0GVHVbwtpgyJbWsCA/edit?usp=sharing)
+ - [ER図](https://drive.google.com/file/d/1xNl5tXauCuh39gGXG9xH6nAS-z_eVPVb/view?usp=sharing)
+ - [テーブル定義書](https://docs.google.com/spreadsheets/d/1b9x0Kse2fSMfFRaFrFSp2wrEoz0GVHVbwtpgyJbWsCA/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -31,5 +31,5 @@
 - IDE：Cloud9
 
 ## 使用素材
- [いらすとや](https://www.irasutoya.com/)
- [Unsplash](https://unsplash.com/ja)
+- [いらすとや](https://www.irasutoya.com/)
+- [Unsplash](https://unsplash.com/ja)
