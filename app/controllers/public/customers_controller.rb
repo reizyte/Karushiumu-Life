@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
 
   #退会処理
   def withdraw
-    customer.update(is_deleted: true)
+    @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path, notice: "退会しました。またのご利用お待ちしております。"
   end
