@@ -37,5 +37,6 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     resources :genres, only:[:index, :edit, :create, :destroy, :update]
     resources :customers, only:[:show, :edit, :update]
+    resources :tags, only:[:index, :edit, :create, :destroy, :update]
   end
 end

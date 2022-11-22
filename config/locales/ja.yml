@@ -7,6 +7,7 @@ ja:
       customer: "会員"
       genre: "ジャンル"
       recipe_comment: "レシピのコメント"
+      tag: "タグ"
     attributes:
       recipe:
         dish_name: "レシピのタイトル"
@@ -28,6 +29,8 @@ ja:
         name: "ジャンル名"
       recipe_comment:
         comment: "コメント"
+      tag:
+        tag_name: "タグ名"
 
     errors:
       messages:
