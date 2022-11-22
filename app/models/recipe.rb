@@ -11,11 +11,11 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :cooking_materials, :how_to_makes, allow_destroy: true
 
   validates :dish_name, presence: true, length: {maximum: 25}
-  validates :explanation, presence: true, length: {maximum: 100}
+  validates :explanation, presence: true, length: {maximum: 70}
   validates :cooking_time, presence: true
   validates :serving, presence: true
 
-  #レシピ画像が無い場合
+  #レシピ画像が無い場合のデフォルト画像
   def get_image
     (image.attached?) ? image : "recipe_no_image.png"
   end
