@@ -19,7 +19,7 @@ class Public::RecipesController < ApplicationController
       @recipes = @genre.recipes.page(params[:page])
     end
     #タグ検索
-    @tag_list = Tag.all
+    @tags = Tag.all
     if params[:tag_id].present?  #presentメソッドでparams[:tag_id]に値が含まれているか確認 => trueの場合下記を実行
       @tag = Tag.find(params[:tag_id])
       @recipes = @tag.recipes.page(params[:page])
@@ -30,7 +30,7 @@ class Public::RecipesController < ApplicationController
     @cooking_materials = @recipe.cooking_materials
     @how_to_makes = @recipe.how_to_makes
     @recipe_comment = RecipeComment.new
-    @recipe_tags = @recipe.tags
+    @tags = @recipe.tags
   end
 
   def create

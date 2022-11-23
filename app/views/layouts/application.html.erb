@@ -73,16 +73,20 @@
       </nav>
     </header>
 
+    <div class="container">
+      <p class="text-success"><%= flash[:notice] %></p>
+    </div>
+
     <%= yield %>
 
     <footer class="mt-5">
       <div class="container">
         <div class="row">
           <div class="col-4">
-            <span class="logo"><%= image_tag "footer_logo.png", size: "260x120"%></span>
+            <a class="logo" href="/"><%= image_tag "footer_logo.png", size: "260x120"%></a>
           </div>
           <div class="col-4 offset-4">
-            <ul class="address">
+            <ul class="footer_about">
               <span>About</span>
               <li>
                 <%= link_to "カルシウムについて知ろう！", about_path, class: "text-light" %>

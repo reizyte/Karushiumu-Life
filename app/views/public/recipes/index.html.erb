@@ -30,7 +30,7 @@
       <p class="mt-5">タグから選ぶ</p>
       <table class="table">
         <tbody>
-          <% @tag_list.each do |tag| %>
+          <% @tags.each do |tag| %>
             <tr>
               <td>
                   <%= link_to tag.tag_name, recipes_path(tag_id: tag.id), class: "text-dark" %>

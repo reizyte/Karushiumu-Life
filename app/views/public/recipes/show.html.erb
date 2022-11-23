@@ -2,7 +2,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-5">
-      <%= render "layouts/flash_message" %>
       <%= render "layouts/errors", obj: @recipe_comment %>
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
@@ -10,7 +9,7 @@
       <p><%= image_tag @recipe.get_image, size:"300x300" %></p>
 
       <!--レシピのタグ-->
-      <% @recipe_tags.each do |tag| %>
+      <% @tags.each do |tag| %>
         <p><%= link_to tag.tag_name, recipes_path(tag_id: tag.id) %>
             <%="(#{tag.recipes.count})" %>
         </p>

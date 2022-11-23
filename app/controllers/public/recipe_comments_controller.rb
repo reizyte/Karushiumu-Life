@@ -10,7 +10,7 @@ class Public::RecipeCommentsController < ApplicationController
     else
       @cooking_materials = @recipe.cooking_materials
       @how_to_makes = @recipe.how_to_makes
-      @recipe_tags = @recipe.tags
+      @tags = @recipe.tags
       render "public/recipes/show"
     end
   end
