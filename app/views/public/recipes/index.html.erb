@@ -26,7 +26,6 @@
           <% end %>
         </tbody>
       </table>
-
       <p class="mt-5">タグから選ぶ</p>
       <table class="table">
         <tbody>
@@ -42,18 +41,9 @@
       </table>
     </div>
 
+    <!--投稿レシピ-->
     <div class="col-10">
-      <% if @recipes.exists? %>
-        <div class="row">
-          <% @recipes.each do |recipe| %>
-            <%= render "public/recipes/recipe", recipe: recipe %>
-          <% end %>
-          <div class="w-100"></div>
-          <div class="ml-auto"><%= paginate @recipes %></div>
-        </div>
-      <% else %>
-        <p class="text-center">レシピはまだありません。</p>
-      <% end %>
+      <%= render "public/recipes/post_recipe", recipes: @recipes %>
     </div>
   </div>
 </div>

@@ -1,0 +1,12 @@
+<!--投稿レシピ-->
+<% if recipes.exists? %>
+  <div class="row">
+    <% recipes.each do |recipe| %>
+      <%= render "public/recipes/recipe", recipe: recipe %>
+    <% end %>
+<% else %>
+    <p class="text-center mt-5">レシピはありません。</p>
+<% end %>
+    <div class="w-100"></div>
+    <div class="ml-auto"><%= paginate recipes %></div>
+  </div>

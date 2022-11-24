@@ -1,16 +1,15 @@
-<!--会員のお気に入り一覧画面-->
+<!--会員のお気に入りレシピ一覧画面-->
 <div class="container">
-  <div class="row">
-    <h4>お気に入りレシピ</h4>
-    <div class="w-100 mb-5"></div>
-    <% if @favorites.exists? %>
+  <h4>お気に入りレシピ</h4>
+  <% if @favorites.exists? %>
+    <div class="row">
       <% @favorites.each do |favorite|%>
         <%= render "public/recipes/recipe", recipe: favorite.recipe %>
       <% end %>
-    <% else %>
-      <p>お気に入りのレシピはまだありません。気になるレシピに☆をつけてみましょう！</p>
-    <% end %>
-    <div class="w-100"></div>
-    <div class="ml-auto"><%= paginate @favorites %></div>
+  <% else %>
+      <p class="text-center mt-5">お気に入りのレシピはまだありません。気になるレシピに<i class="fas fa-star" style="color: gold;"></i>をつけてみましょう！</p>
+  <% end %>
+      <div class="w-100"></div>
+      <div class="ml-auto"><%= paginate @favorites %></div>
    </div>
  </div>
