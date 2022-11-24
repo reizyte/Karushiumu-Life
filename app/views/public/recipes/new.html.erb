@@ -23,17 +23,53 @@
         </table>
       </div>
 
+
+      <!--41行目、42行目で材料・分量のフォームの表示位置の指定し、36行目に代入する-->
       <div class="col-6">
-        <%= render "material", {recipe: @recipe, f: f} %>
+        <p>材料</p>
+        <%= f.number_field :serving, min: 1, max:15 %>人分
+        <%= f.text_field :cooking_time, placeholder: "時間" %>分
+        <%= f.fields_for :cooking_materials do |t| %>
+          <%= render "cooking_material_fields", f: t %>
+        <% end %>
+
+        <div id="detail-association-insertion-point"></div>
+
+        <%= link_to_add_association "+フォームを追加", f, :cooking_materials,
+          class: "btn btn-secondary btn-block",
+          data: {
+          association_insertion_node: '#detail-association-insertion-point',
+          association_insertion_method: 'before'
+          }%>
       </div>
     </div>
 
+
+    <!--62行目、63行目で料理手順のフォームの表示位置の指定し、56行目に代入する-->
     <div class="row border-top">
       <div class="col-6 mt-5">
-        <%= render "make", {recipe: @recipe, f: f} %>
+        <p>作り方</p>
+        <%= f.fields_for :how_to_makes do |t| %>
+          <%= render "how_to_make_fields", f: t %>
+        <% end %>
+
+        <div id="make-association-insertion-point"></div>
+
+        <div class="col-4">
+          <%= link_to_add_association "+フォームを追加", f, :how_to_makes,
+            class: "btn btn-secondary btn-block",
+            data: {
+            association_insertion_node: '#make-association-insertion-point',
+            association_insertion_method: 'before'
+            }%>
+        </div>
       </div>
 
+
       <div class="col-5 offset-1 mt-5" style="background-color: linen;">
+        <p>メニュージャンル</p>
+        <div class="select_field mb-3"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
+
         <p>使用したカルシウムの食材を、<br>
             <%= Tag.all.pluck(:tag_name).join("、") %><br>
             でタグをつけてみましょう！
@@ -41,9 +77,6 @@
         <p>※タグ無しでも投稿は可能です。</p>
         <p>タグ</p>
         <div><%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %></div>
-
-        <p>ジャンル</p>
-        <div class="select_field mb-5"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
         <%= f.submit "投稿する", class: "btn btn-primary" %>
       </div>
     </div>
