@@ -6,6 +6,10 @@
         <div class="mx-auto" style="width: 130px;"><%= image_tag recipe.get_image, size:"130x130" %></div>
         <p class="h5"><%= recipe.dish_name %></p>
         <p><%= recipe.explanation %></p>
+        <!--お気に入りボタン-->
+        <div id="favorite_buttons_<%= recipe.id %>">
+          <%= render "public/favorites/btn", recipe: recipe %>
+        </div>
       </div>
     <% end %>
   </li>
