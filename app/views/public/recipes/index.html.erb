@@ -1,16 +1,20 @@
 <!--レシピ一覧画面-->
 <div class="container">
   <div class="row mb-5">
-    <div class="col-5 h3">みんなのCaレシピ</div>
+    <div class="col-3 h3 mr-5">みんなのCaレシピ</div>
 
     <!--検索機能-->
-    <div class="col-6">
+    <div class="col-5">
       <%= search_form_for @q do |f| %>
         <div class="input-group">
           <%= f.search_field :dish_name_or_cooking_materials_material_name_cont, size: 40, placeholder: "レシピ、材料で検索" %><%= f.submit '検索', class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
+
+    <div class="col-3">
+      <%= link_to "人気のレシピはこちら", recipes_rank_path, class: "btn btn-warning" %>
+     </div>
   </div>
 
   <!--サイドバー-->

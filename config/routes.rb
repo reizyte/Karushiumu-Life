@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "homes/about" => "homes#about", as: "about"
     get "customers/:id/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
     patch "customers/:id/withdraw" => "customers#withdraw", as: "withdraw_customer"
+    get "recipes/rank" => "recipes#rank"
 
     resources :customers, only:[:show, :edit, :update] do
       member do

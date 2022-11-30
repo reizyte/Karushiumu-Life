@@ -1,0 +1,8 @@
+<div class="container">
+   <h4>人気のレシピ</h4>
+   <div class="row">
+    <% @recipes.each do |recipe| %>
+      <%= render "public/recipes/recipe", recipe: recipe %>
+    <% end %>
+  </div>
+</div>

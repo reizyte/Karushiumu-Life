@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-  before_action :authenticate_customer!, except:[:index, :show, :search]
+  before_action :authenticate_customer!, except:[:index, :show, :search, :destroy]
   before_action :set_recipe, only: [:show, :destroy]
 
   def new
@@ -45,7 +45,12 @@ class Public::RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to customer_path(current_customer), notice: "レシピを削除しました。"
+    redirect_to customer_path(@recipe.customer), notice: "レシピを削除しました。"
+  end
+
+  # レシピのランキング
+  def rank
+    @recipes = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
   end
 
   private

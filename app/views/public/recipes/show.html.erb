@@ -17,8 +17,9 @@
     </div>
 
     <div class="col-5 mt-5">
-      <% if @recipe.customer == current_customer %>
-        <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, class: "btn btn-danger" %>
+      <!--レシピを投稿した会員本人、もしくは管理者のみがレシピの投稿を削除可能-->
+      <% if @recipe.customer == current_customer || admin_signed_in? %>
+        <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, "data-confirm" => "OKを押すとレシピが削除されます。本当によろしいですか？", class: "btn btn-danger" %>
       <% end %>
 
       <!--お気に入りボタン-->
@@ -67,7 +68,7 @@
         <% end %>
       </div>
     <% else %>
-      <p class="text-center border-bottom">会員登録すると、レシピにコメントをすることができます。</p>
+      <p class="text-center border-bottom">会員登録すると、レシピにコメントとお気に入りをすることができます。</p>
     <% end %>
 
     <!--コメント一覧-->
