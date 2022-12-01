@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-  before_action :authenticate_customer!, except:[:index, :show, :search, :destroy]
+  before_action :authenticate_customer!, except:[:index, :show, :search, :destroy, :rank]
   before_action :set_recipe, only: [:show, :destroy]
 
   def new
@@ -50,7 +50,8 @@ class Public::RecipesController < ApplicationController
 
   # レシピのランキング
   def rank
-    @recipes = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    recipes = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    @recipes = Kaminari.paginate_array(recipes).page(params[:page])
   end
 
   private
