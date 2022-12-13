@@ -35,8 +35,3 @@
 - [いらすとや](https://www.irasutoya.com/)
 - [Unsplash](https://unsplash.com/ja)
 - [pixaboy](https://pixabay.com/ja/)
-
-## 管理者ログイン情報
-URL:".../admin/sign_in"  
-email:"admin@admin"  
-Password:"testtest"
