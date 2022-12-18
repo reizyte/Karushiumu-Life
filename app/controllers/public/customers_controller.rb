@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :ensure_correct_customer, only: [:update, :edit]
+  before_action :ensure_correct_customer, only: [:update, :edit, :unsubscribe, :withdraw]
   before_action :set_customer, only: [:show, :edit, :update, :withdraw, :favorites]
 
   def show
@@ -46,9 +46,9 @@ class Public::CustomersController < ApplicationController
   def ensure_correct_customer
     @customer = Customer.find(params[:id])
     if @customer != current_customer
-      redirect_to customer_path(current_customer), notice: "権限がありません。"
+      redirect_to customer_path(@customer), notice: "権限がありません。"
     elsif @customer.name == "guestcustomer"
-      redirect_to customer_path(current_customer) , notice: "ゲストユーザはプロフィール編集画面へ遷移できません。"
+      redirect_to customer_path(current_customer) , notice: "ゲストユーザは[プロフィール編集画面][退会画面]へ遷移できません。"
     end
   end
 end
