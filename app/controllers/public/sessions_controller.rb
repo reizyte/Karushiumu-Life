@@ -32,7 +32,7 @@ class Public::SessionsController < Devise::SessionsController
      @customer = Customer.find_by(email: params[:customer][:email])
     # アカウントを取得できなかった場合、このメソッドを終了する
      return if !@customer
-    # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    # もし取得したアカウントのパスワードと入力されたパスワードが一致している、且つ退会済み場合
      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
       redirect_to new_customer_registration_path, notice: "退会済みです。別のメールアドレスをご使用ください。"
      end

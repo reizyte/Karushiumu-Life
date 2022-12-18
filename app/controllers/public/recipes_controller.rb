@@ -5,7 +5,7 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @cooking_materials = @recipe.cooking_materials.build  #親モデル.子モデル.buildで子モデルのインスタンス作成
-    @how_to_makes = @recipe.how_to_makes.build  #親モデル.子モデル.buildで子モデルのインスタンス作成
+    @how_to_makes = @recipe.how_to_makes.build
   end
 
   def index
