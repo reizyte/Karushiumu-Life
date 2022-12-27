@@ -7,7 +7,7 @@
         <%= render "public/recipes/recipe", recipe: favorite.recipe %>
       <% end %>
   <% else %>
-      <p class="text-center mt-5">お気に入りのレシピはまだありません。気になるレシピに<i class="fas fa-star" style="color: gold;"></i>をつけてみましょう！</p>
+      <p class="text-center mt-5">お気に入りのレシピはまだありません。気になるレシピに<i class="fas fa-star favorite_icon"></i>をつけてみましょう！</p>
   <% end %>
       <div class="w-100"></div>
       <div class="ml-auto"><%= paginate @favorites %></div>

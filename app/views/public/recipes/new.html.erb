@@ -66,18 +66,20 @@
       </div>
 
 
-      <div class="col-5 offset-1 mt-5" style="background-color: linen;">
-        <p>メニュージャンル</p>
-        <div class="select_field mb-3"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
-
-        <p>使用したカルシウムの食材を、<br>
-            <%= Tag.all.pluck(:tag_name).join("、") %><br>
-            でタグをつけてみましょう！
-        </p>
-        <p>※タグ無しでも投稿は可能です。</p>
-        <p>タグ</p>
-        <div><%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %></div>
-        <%= f.submit "投稿する", class: "btn btn-primary" %>
+      <div class="col-5 offset-1 mt-5">
+        <div class="recipe_category">
+          <p>メニュージャンル</p>
+          <div class="select_field mb-3"><%= f.collection_select :genre_id, Genre.all, :id, :name %></div>
+  
+          <p>使用したカルシウムの食材を、<br>
+              <%= Tag.all.pluck(:tag_name).join("、") %><br>
+              でタグをつけてみましょう！
+          </p>
+          <p>※タグ無しでも投稿は可能です。</p>
+          <p>タグ</p>
+          <div><%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %></div>
+          <%= f.submit "投稿する", class: "btn btn-primary" %>
+        </div>
       </div>
     </div>
   <% end %>

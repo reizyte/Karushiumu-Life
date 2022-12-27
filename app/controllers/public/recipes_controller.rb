@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-  before_action :authenticate_customer!, except:[:index, :show, :search, :destroy, :rank]
+  before_action :authenticate_customer!, except:[:index, :show, :search, :rank, :destroy]
   before_action :set_recipe, only: [:show, :destroy]
 
   def new
@@ -44,13 +44,14 @@ class Public::RecipesController < ApplicationController
   end
 
   def destroy
+    return unless @recipe.customer == current_customer || current_admin
     @recipe.destroy
     redirect_to customer_path(@recipe.customer), notice: "レシピを削除しました。"
   end
 
   # レシピのランキング
   def rank
-    recipes = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    recipes = Recipe.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     @recipes = Kaminari.paginate_array(recipes).page(params[:page])
   end
 

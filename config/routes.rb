@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    root :to =>"homes#top"
+    root to: "homes#top"
     get "homes/about" => "homes#about", as: "about"
     get "customers/:id/unsubscribe" => "customers#unsubscribe", as: "confirm_unsubscribe"
     patch "customers/:id/withdraw" => "customers#withdraw", as: "withdraw_customer"
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root :to => "homes#top"
+    root to: "homes#top"
     resources :genres, only:[:index, :edit, :create, :destroy, :update]
     resources :customers, only:[:show, :edit, :update]
     resources :tags, only:[:index, :edit, :create, :destroy, :update]
