@@ -10,7 +10,7 @@
 
       <!--レシピのタグ-->
       <% @tags.each do |tag| %>
-        <p><%= link_to tag.tag_name, recipes_path(tag_id: tag.id) %>
+        <p><%= link_to tag.tag_name, recipes_category_path(tag_id: tag.id) %>
             <%="(#{tag.recipes.count})" %>
         </p>
       <% end %>

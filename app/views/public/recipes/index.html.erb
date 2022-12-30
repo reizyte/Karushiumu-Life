@@ -25,7 +25,7 @@
         <tbody>
           <% @genres.each do |genre| %>
             <tr>
-              <td><%= link_to genre.name, recipes_path(genre_id: genre.id), class: "text-dark" %></td>
+              <td><%= link_to genre.name, recipes_category_path(genre_id: genre.id), class: "text-dark" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -36,7 +36,7 @@
           <% @tags.each do |tag| %>
             <tr>
               <td>
-                  <%= link_to tag.tag_name, recipes_path(tag_id: tag.id), class: "text-dark" %>
+                  <%= link_to tag.tag_name, recipes_category_path(tag_id: tag.id), class: "text-dark" %>
                   <%="(#{tag.recipes.count})" %>
               </td>
             </tr>
@@ -47,6 +47,10 @@
 
     <!--投稿レシピ-->
     <div class="col-10">
+      <tr>
+        <th><%= sort_link(@q, :id, "新旧レシピ", default_order: :desc) %> / </th>
+        <th><%= sort_link(@q, :favorites_id, "最近★のついたレシピ", default_order: :desc )%></th>
+      </tr>
       <%= render "public/recipes/post_recipe", recipes: @recipes %>
     </div>
   </div>

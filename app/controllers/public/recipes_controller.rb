@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-  before_action :authenticate_customer!, except:[:index, :show, :search, :rank, :destroy]
+  before_action :authenticate_customer!, except:[:index, :show, :search, :rank, :destroy, :category]
   before_action :set_recipe, only: [:show, :destroy]
 
   def new
@@ -12,18 +12,8 @@ class Public::RecipesController < ApplicationController
     #キーワード検索
     @q = Recipe.ransack(params[:q])
     @recipes = @q.result(distinct: true).page(params[:page])
-    #ジャンル検索
     @genres = Genre.all
-    if params[:genre_id].present?  #presentメソッドでparams[:genre_id]に値が含まれているか確認 => trueの場合下記を実行
-      @genre = Genre.find(params[:genre_id])
-      @recipes = @genre.recipes.page(params[:page])
-    end
-    #タグ検索
     @tags = Tag.all
-    if params[:tag_id].present?  #presentメソッドでparams[:tag_id]に値が含まれているか確認 => trueの場合下記を実行
-      @tag = Tag.find(params[:tag_id])
-      @recipes = @tag.recipes.page(params[:page])
-    end
   end
 
   def show
@@ -53,6 +43,18 @@ class Public::RecipesController < ApplicationController
   def rank
     recipes = Recipe.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     @recipes = Kaminari.paginate_array(recipes).page(params[:page])
+  end
+
+  def category
+    #ジャンル検索した場合
+    if params[:genre_id].present?  #presentメソッドでparams[:genre_id]に値が含まれているか確認 => trueの場合下記を実行
+      @genre = Genre.find(params[:genre_id])
+      @recipes = @genre.recipes.page(params[:page])
+    #タグ検索した場合
+    elsif params[:tag_id].present?  #presentメソッドでparams[:tag_id]に値が含まれているか確認 => trueの場合下記を実行
+      @tag = Tag.find(params[:tag_id])
+      @recipes = @tag.recipes.page(params[:page])
+    end
   end
 
   private

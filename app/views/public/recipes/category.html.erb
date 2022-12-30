@@ -1,0 +1,8 @@
+<div class="container">
+  <% if params[:genre_id].present? %>
+    <h4><%= @genre.name %>のレシピ</h4>
+  <% elsif params[:tag_id].present?%>
+    <h4><%= @tag.tag_name %>のレシピ</h4>
+  <% end %>
+  <%= render "public/recipes/post_recipe", recipes: @recipes %>
+</div>
