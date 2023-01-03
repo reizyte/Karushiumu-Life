@@ -21,7 +21,11 @@ class Customer < ApplicationRecord
   end
 
   #プロフィールのデフォルト画像設定
-  def get_profile_image
-    (profile_image.attached?) ? profile_image : "no_image.png"
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join("app/assets/images/no_image.png")
+      profile_image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
   end
 end

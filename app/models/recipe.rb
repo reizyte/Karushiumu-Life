@@ -16,8 +16,12 @@ class Recipe < ApplicationRecord
   validates :serving, presence: true
 
   #レシピ画像が無い場合のデフォルト画像
-  def get_image
-    (image.attached?) ? image : "recipe_no_image.png"
+  def get_image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join("app/assets/images/recipe_no_image.png")
+      image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
+    end
+    image.variant(resize_to_limit: [width, height]).processed
   end
 
   #引数の会員idがFavoritesテーブル内に存在（exists?）するかどうか調べる

@@ -5,8 +5,8 @@
       <%= render "layouts/errors", obj: @recipe_comment %>
       <p class="h3 border-bottom border-primary"><%= @recipe.dish_name %></p>
       <p class="mb-3 h5"><%= @recipe.explanation %></p>
-      <p><%= image_tag @recipe.customer.get_profile_image, size:"30x30" %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
-      <p><%= image_tag @recipe.get_image, size:"300x300" %></p>
+      <p><%= image_tag @recipe.customer.get_profile_image(30, 30) %><%= link_to @recipe.customer.name, customer_path(@recipe.customer) %>さんの投稿</p>
+      <p><%= image_tag @recipe.get_image(300, 300) %></p>
 
       <!--レシピのタグ-->
       <% @tags.each do |tag| %>
@@ -75,7 +75,7 @@
     <div class="col-10">
       <% @recipe.recipe_comments.each do |recipe_comment| %>
         <div class="border mb-4">
-          <p><%= image_tag recipe_comment.customer.get_profile_image, size:"30x30" %>
+          <p><%= image_tag recipe_comment.customer.get_profile_image(30, 30) %>
               <%= link_to recipe_comment.customer.name, customer_path(recipe_comment.customer) %>
               <%= recipe_comment.created_at.strftime('%Y/%m/%d') %>
           </p>

@@ -3,7 +3,7 @@
   <li class="myrecipe_item list-unstyled">
     <%= link_to recipe_path(recipe), class: "text-dark" do %>
       <div class="border text-center">
-        <div class="mx-auto" style="width: 130px;"><%= image_tag recipe.get_image, size:"130x130" %></div>
+        <div class="mx-auto" style="width: 130px;"><%= image_tag recipe.get_image(130, 130) %></div>
         <p class="h5"><%= recipe.dish_name %></p>
         <p><%= recipe.explanation %></p>
         <!--お気に入りボタン-->
