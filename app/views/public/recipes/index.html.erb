@@ -49,7 +49,7 @@
     <div class="col-10">
       <tr>
         <th><%= sort_link(@q, :id, "新旧レシピ", default_order: :desc) %> / </th>
-        <th><%= sort_link(@q, :favorites_id, "最近★のついたレシピ", default_order: :desc )%></th>
+        <th><%= sort_link(@q, :favorites_created_at, "★のついたレシピ", default_order: :desc )%></th>
       </tr>
       <%= render "public/recipes/post_recipe", recipes: @recipes %>
     </div>
