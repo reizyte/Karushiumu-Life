@@ -1,7 +1,7 @@
 <!--会員ログイン画面-->
 <div class="container">
   <h2 class="mb-4">ログイン</h2>
-  <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <%= form_with model: Customer.new, url: customer_session_path do |f| %>
     <table>
       <tbody>
         <tr>

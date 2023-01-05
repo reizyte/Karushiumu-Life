@@ -83,7 +83,7 @@
 
           <!--会員は自身の書いたコメントのみ削除可能。管理者はすべてのコメント削除が可能-->
           <% if recipe_comment.customer == current_customer || current_admin %>
-            <%= link_to "コメント削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger" %>
+            <%= link_to "コメント削除", recipe_recipe_comment_path(@recipe, recipe_comment), method: :delete, class: "btn btn-danger" %>
           <% end %>
         </div>
       <% end %>

@@ -16,7 +16,6 @@ class Public::RecipeCommentsController < ApplicationController
   end
 
   def destroy
-    return unless @recipe.customer == current_customer || current_admin
     @comment = RecipeComment.find(params[:id])
     @comment.destroy
     redirect_to recipe_path(@recipe), notice: "コメントを削除しました。"
