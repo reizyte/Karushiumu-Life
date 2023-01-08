@@ -36,7 +36,7 @@ class Public::RecipesController < ApplicationController
   def destroy
     return unless @recipe.customer == current_customer || current_admin
     @recipe.destroy
-    redirect_to customer_path(@recipe.customer), notice: "レシピを削除しました。"
+    redirect_to recipes_path, notice: "レシピを削除しました。"
   end
 
   # レシピのランキング

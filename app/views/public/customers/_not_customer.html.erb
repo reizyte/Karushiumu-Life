@@ -1,0 +1,10 @@
+<!--会員ではないユーザの閲覧制限用ページ-->
+<div class="row">
+  <div class="col-5">
+    <%= image_tag "cooking_mama.png", size: "300x300" %>
+  </div>
+  <div class="col-7">
+    <h5 class="mt-5">こちらは会員でない方は閲覧することができません。</h5>
+      <%= link_to "レシピ一覧に戻る", recipes_path, class: "btn btn-primary mt-3" %>
+  </div>
+</div>

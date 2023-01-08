@@ -1,26 +1,38 @@
 <!--会員側/会員詳細画面-->
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-3">
-      <div><%= image_tag @customer.get_profile_image(120, 120) %></div>
-    </div>
-    <div class="col-8">
-      <h4><%= @customer.name %></h4>
-      <h5><%= @customer.introduction %></h5>
-    </div>
-  </div>
-
-  <!--他会員のプロフィール編集・お気に入りレシピ・レシピ投稿のリンクは表示させない-->
-  <% if @customer == current_customer %>
+  <% if customer_signed_in? %>
     <div class="row mt-5">
-      <% if @customer.name != "guestcustomer" %><!--ゲスト会員はプロフィール編集不可-->
-        <%= link_to "プロフィール編集する", edit_customer_path(@customer), class: "btn btn-success mr-3" %>
-      <% end %>
-      <%= link_to "お気に入りレシピ", favorites_customer_path(@customer), class: "btn btn-warning mr-3" %>
-      <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-info" %>
+      <div class="col-3">
+        <div><%= image_tag @customer.get_profile_image(120, 120) %></div>
+      </div>
+      <div class="col-8">
+        <h4><%= @customer.name %></h4>
+        <h5><%= @customer.introduction %></h5>
+      </div>
     </div>
-  <% end %>
 
-  <h5 class="mt-5">投稿したレシピ</h5>
-  <%= render "public/recipes/post_recipe", recipes: @recipes %>
+
+    <p><%= link_to @customer.followeds.count, followeds_customer_path(@customer) %>フォロー  <%= link_to @customer.followers.count, followers_customer_path(@customer)%>フォロワー</p>
+
+    <!--他会員のプロフィール編集・お気に入りレシピ・レシピ投稿のリンクは表示させない-->
+    <% if @customer == current_customer %>
+      <%= link_to "お気に入りレシピ", favorites_customer_path(@customer), class: "btn btn-warning" %>
+      <%= link_to "レシピを投稿する", new_recipe_path, class: "btn btn-info" %>
+    <% elsif @customer != current_customer && @customer.following_by?(current_customer) %>
+      <%= link_to "フォロー解除", customer_relationships_path(@customer), method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "フォローする", customer_relationships_path(@customer), method: :post, class: "btn btn-primary" %>
+    <% end %>
+
+    <% if @customer == current_customer && @customer.name != "guestcustomer" %><!--ゲスト会員はプロフィール編集不可-->
+      <%= link_to "プロフィール編集する", edit_customer_path(@customer), class: "btn btn-success mr-3" %>
+    <% end %>
+
+
+    <h5 class="mt-5">投稿したレシピ</h5>
+    <%= render "public/recipes/post_recipe", recipes: @recipes %>
+
+  <% else %>
+    <%= render "public/customers/not_customer" %>
+  <% end %>
 </div>

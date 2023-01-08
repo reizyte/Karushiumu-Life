@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :ensure_correct_customer, only: [:update, :edit, :unsubscribe, :withdraw]
-  before_action :set_customer, only: [:show, :edit, :update, :withdraw, :favorites]
+  before_action :set_customer, only: [:show, :edit, :update, :withdraw, :favorites, :followeds, :followers]
 
   def show
     @recipes = @customer.recipes.page(params[:page])
@@ -31,6 +31,16 @@ class Public::CustomersController < ApplicationController
   #お気に入り一覧
   def favorites
     @favorites = @customer.favorites.includes(:recipe).page(params[:page])
+  end
+
+  #フォロー一覧
+  def followeds
+    @customers = @customer.followeds
+  end
+
+  #フォロワー一覧
+  def followers
+    @customers = @customer.followers
   end
 
   private

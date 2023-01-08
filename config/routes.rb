@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     get "recipes/category" => "recipes#category"
 
     resources :customers, only:[:show, :edit, :update] do
+      resource :relationships, only:[:create, :destroy]
       member do
+        get :followeds
+        get :followers
         get :favorites
       end
     end

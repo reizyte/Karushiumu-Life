@@ -10,6 +10,7 @@ class Recipe < ApplicationRecord
   has_many :tags, through: :recipe_tags
   accepts_nested_attributes_for :cooking_materials, :how_to_makes, allow_destroy: true
 
+  validates :image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validates :dish_name, presence: true, length: {maximum: 25}
   validates :explanation, presence: true, length: {maximum: 70}
   validates :cooking_time, presence: true

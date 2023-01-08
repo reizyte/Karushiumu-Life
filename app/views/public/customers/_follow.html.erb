@@ -1,0 +1,17 @@
+<!--フォロー・フォロワー-->
+<% if customers.exists? %>
+  <div class="row">
+    <table class="table table-hover">
+      <% customers.each do |customer| %>
+        <tbody>
+          <tr>
+            <td><%= image_tag customer.get_profile_image(60, 60) %></td>
+            <td><%= link_to customer.name, customer_path(customer) %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+<% else %>
+  <p class="text-center mt-5">ユーザーはいません。</p>
+<% end %>

@@ -9,6 +9,17 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :recipe_comments, dependent: :destroy
 
+  #フォローする側からのhas_many
+  has_many :relationships, foreign_key: "followed_id", dependent: :destroy
+  #ユーザがフォローしてる人を全員持ってくる
+  has_many :followeds, through: :relationships, source: :follower
+
+  #フォローされる側からのhas_many
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  #ユーザをフォローしてくれている人を全員持ってくる
+  has_many :followers, through: :reverse_of_relationships, source: :followed
+
+  validates :profile_image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validates :name, presence: true
   validates :introduction, length: {maximum: 150}
 
@@ -27,5 +38,10 @@ class Customer < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: "default-image.png", content_type: "image/png")
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  # フォローされているかの判定
+  def following_by?(customer)
+      reverse_of_relationships.find_by(followed_id: customer.id).present?
   end
 end
